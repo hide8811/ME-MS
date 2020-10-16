@@ -1,11 +1,2 @@
-FROM node:12.16.1
-
+FROM node:12-alpine
 WORKDIR /${WORKDIR}
-
-COPY ["package.json", "yarn.lock", "./"]
-
-RUN yarn install
-
-COPY . .
-
-ENTRYPOINT [ "yarn", "start" ]
