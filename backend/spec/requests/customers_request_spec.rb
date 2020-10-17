@@ -1,20 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Customers', type: :request do
+  let(:json) { JSON.parse(response.body) }
+
   describe 'GET #index' do
-    it 'リクエストが成功すること' do
-      get '/customers'
-      expect(response).to have_http_status(:success)
-    end
-
-    it '全てのcustomersテーブルのデータを取得できていること' do
+    before do
       create_list(:customer, 10)
-
       get '/customers'
-      json = JSON.parse(response.body)
-
-      expect(json.length).to eq 10
     end
+
+    it { expect(response).to have_http_status(:ok) }
+
+    it { expect(json.length).to eq 10 }
   end
 
   describe 'POST #create' do
@@ -47,11 +44,8 @@ RSpec.describe 'Customers', type: :request do
     let(:customer) { create(:customer) }
     before { get "/customers/#{customer.id}" }
 
-    it { expect(response).to have_http_status(:success) }
+    it { expect(response).to have_http_status(:ok) }
 
-    it '指定されたIDのcustomersテーブルのデータが取得できていること' do
-      json = JSON.parse(response.body)
-      expect(json['age']).to eq customer.age
-    end
+    it { expect(json['age']).to eq customer.age }
   end
 end
