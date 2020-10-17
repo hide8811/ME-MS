@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
-  def index; end
+  def index
+    @customers = Customer.all
+    render json: @customers
+  end
 
   def create; end
 
