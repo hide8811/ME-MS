@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :customer do
-    age { "MyString" }
-    date { "2020-10-17" }
-    time { "2020-10-17 11:26:39" }
-    course { "MyString" }
-    option { false }
+    age { '30代前半' }
+    date { Faker::Date.between(from: 1.year.ago, to: Date.today) }
+    time { '12:00' }
+    course { '60min' }
+    option { true }
     cosplay { false }
-    extended_time { "MyString" }
-    deep_lymph { "MyString" }
+    extended_time { '--' }
+    deep_lymph { '--' }
   end
 end
