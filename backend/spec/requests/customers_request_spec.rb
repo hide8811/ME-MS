@@ -43,10 +43,15 @@ RSpec.describe 'Customers', type: :request do
     end
   end
 
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/customers/show'
-      expect(response).to have_http_status(:success)
+  describe 'GET #show' do
+    let(:customer) { create(:customer) }
+    before { get "/customers/#{customer.id}" }
+
+    it { expect(response).to have_http_status(:success) }
+
+    it '指定されたIDのcustomersテーブルのデータが取得できていること' do
+      json = JSON.parse(response.body)
+      expect(json['age']).to eq customer.age
     end
   end
 end
