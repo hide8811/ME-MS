@@ -14,7 +14,10 @@ class CustomersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @customer = Customer.find(params[:id])
+    render json: @customer
+  end
 
   private
 
