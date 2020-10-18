@@ -1,19 +1,17 @@
-version: '3.8'
+version: "3.8"
 
 volumes:
   db-data:
 
 services:
   frontend:
-    build:
-      context: ./frontend
-      args:
-        WORKDIR: ${WORKDIR}
+    build: ./frontend
     command: yarn start
     volumes:
-      - ./frontend:/${WORKDIR}
+      - ./frontend:/${WORKDIR}/frontend
     ports:
       - "${FRONTEND_PORT}:${CONTAINER_PORT}"
+    stdin_open: true
     depends_on:
       - backend
 
@@ -37,9 +35,9 @@ services:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - 'db-data:/var/lib/mysql'
+      - "db-data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       TZ: Aisa/Tokyo
     ports:
-      - '3306:3306'
+      - "3306:3306"
