@@ -1,9 +1,14 @@
 import React from 'react';
+import ContentBtns from './components/Molecules/ContentBtns';
 import Header from './components/Organisms/Header';
 
-function App() {
+const App = () => {
+
   return (
-    <Header />
+    <>
+      <Header />
+      <ContentBtns />
+    </>
   );
 }
 
