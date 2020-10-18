@@ -1,15 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(far)
 
-const ContentBtn = () => {
+type Props = {iconName:string}
+
+const ContentBtn: React.FC<Props> = ({iconName}) => {
   return(
     <>
       <Button>
-        <FontAwesomeIcon icon={['far', 'calendar-check']} />
+        <i className={iconName}></i>
       </Button>
     </>
   )
@@ -22,6 +20,9 @@ const Button = styled.div`
   background: rgb(189, 189, 189);
   box-shadow: 0 5px 0 rgba(0,0,0 ,0.5);
   margin: 20px 0 0 20px;
+  color: #fff;
+  font-size: 200px;
+  line-height: 300px;
   &:active {
     box-shadow: none;
     margin-top: 25px;
@@ -29,6 +30,8 @@ const Button = styled.div`
   @media screen and (max-width: 480px) {
       width: 42vw;
       height: 42vw;
+      font-size: 120px;
+      line-height: 42vw;
   }
 `;
 
