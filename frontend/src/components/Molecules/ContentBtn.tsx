@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { far } from '@fortawesome/free-regular-svg-icons'
+library.add(far)
 
 const ContentBtn = () => {
   return(
     <>
-      <Button>btn</Button>
+      <Button>
+        <FontAwesomeIcon icon={['far', 'calendar-check']} />
+      </Button>
     </>
   )
 }
