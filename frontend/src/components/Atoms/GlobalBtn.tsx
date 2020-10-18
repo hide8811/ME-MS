@@ -1,12 +1,13 @@
 import React from 'react'
 
 type Props = {
-  btnName: string
+  btnName: string,
+  clickEvent: any
 }
 
-const GlobalBtn:React.FC<Props> = ({btnName}) => {
+const GlobalBtn:React.FC<Props> = ({btnName,clickEvent}) => {
   return(
-  <button>{btnName}</button>
+    <button onClick={clickEvent()}>{btnName}</button>
   )
 }
 

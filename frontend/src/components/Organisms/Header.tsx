@@ -5,18 +5,14 @@ import LoginModal from '../Molecules/LoginModal'
 const Header = () => {
   const [isSignIn, changeSignState] = useState(false)
 
-  let login
-  if(isSignIn) {
-    login = <LoginModal change = {() => changeSignState(!isSignIn)}/>
-  }else{
-    login = 'ログイン'
-  }
-
   return(
     <>
       <HEADER>
         <H1>Comfortbois MS</H1>
-        <P onClick ={() => changeSignState(!isSignIn)}>{login}</P>
+        {isSignIn
+          ? <LoginModal change={() => changeSignState(!isSignIn)}/>
+          : <P onClick ={() => changeSignState(!isSignIn)}>ログイン</P>
+        }
       </HEADER>
     </>
   )
