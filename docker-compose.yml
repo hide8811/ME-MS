@@ -5,10 +5,13 @@ volumes:
 
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        WORKDIR: ${WORKDIR}
     command: yarn start
     volumes:
-      - ./frontend:/${WORKDIR}/frontend
+      - ./frontend:/${WORKDIR}
     ports:
       - "${FRONTEND_PORT}:${CONTAINER_PORT}"
     stdin_open: true
