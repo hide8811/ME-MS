@@ -3,51 +3,58 @@ import styled from 'styled-components'
 import GlobalBtn from '../Atoms/GlobalBtn'
 import GlobalInput from '../Atoms/GlobalInput'
 
-const LoginModal = (props:any) => {
+type Props = {
+  clickEvent: any
+}
+
+const LoginModal:React.FC<Props> = ({clickEvent}) => {
   const eventStop = (e:any) => {
     e.preventDefault()
   }
   return(
     <LOGIN>
-      <div className="close-back"></div>
-      <div className="inner">
-        <form onSubmit={eventStop}>
-          <GlobalInput type='text' placeholder='かり' label={'ログインID'} />
-          <GlobalBtn btnName='btn' clickEvent={() => props.()}/>
-        </form>
-      </div>
+      <div className="close-back" onClick={clickEvent}></div>
+      <form onSubmit={eventStop}>
+        <GlobalInput type='text' placeholder='id' label={'ログインID'} />
+        <GlobalInput type='password' placeholder='password' label={'パスワード'} />
+        <div className="text-right">
+          <GlobalBtn btnName='btn' clickEvent={() => clickEvent}/>
+        </div>
+      </form>
     </LOGIN>
   )
 }
 
 const LOGIN = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
   .close-back{
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,.5);
-    position: absolute;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 0;
     left: 0;
-    }
-  .inner{
-    width:100vw;
-    height:100vh;
-    position:relative;
-    form{
-      background:#f00;
-      position:absolute;
-      width: 100%;
-      height: 300px;
-      top:0;
-      bottom:0;
-      left:0;
-      right:0;
-      margin:auto;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  form{
+    position: absolute;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.7);
+    max-width: 500px;
+    height: 195px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10;
+    .text-right {
+      margin-top: -5px;
+      text-align: right;
     }
   }
 `;

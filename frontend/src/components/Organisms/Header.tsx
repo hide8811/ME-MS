@@ -1,39 +1,35 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import LoginModal from '../Molecules/LoginModal'
 
-const Header = () => {
-  const [isSignIn, changeSignState] = useState(false)
+type Props = {
+  clickEvent?: any
+}
 
+const Header:React.FC<Props> = ({clickEvent}) => {
   return(
-    <>
-      <HEADER>
-        <H1>Comfortbois MS</H1>
-        {isSignIn
-          ? <LoginModal change={() => changeSignState(!isSignIn)}/>
-          : <P onClick ={() => changeSignState(!isSignIn)}>ログイン</P>
-        }
-      </HEADER>
-    </>
+    <HEADER>
+      <h1>Comfortbois MS</h1>
+      <p onClick={() => clickEvent()}>ログイン</p>
+    </HEADER>
   )
 }
 
 const HEADER = styled.header`
-  border-bottom: 1px solid rgb(0, 255, 123);
+  border-bottom: 1px solid #3CB371;
   display: flex;
   justify-content: space-between;
   position: relative;
-`;
-const H1 = styled.div`
-  line-height: 40px;
-  font-size: 20px;
-  margin-left: 5px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: bold;
-`;
-  const P = styled.div`
-  line-height: 40px;
-  margin-right: 5px;
+  h1{
+    line-height: 40px;
+    font-size: 20px;
+    margin-left: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+  }
+  p{
+    line-height: 40px;
+    margin-right: 5px;
+  }
 `;
 
 export default Header
