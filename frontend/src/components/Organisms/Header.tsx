@@ -5,8 +5,8 @@ type Props = {
   clickEvent?: any
 }
 
-const Header:React.FC<Props> = ({clickEvent}) => {
-  return(
+const Header: React.FC<Props> = ({ clickEvent }) => {
+  return (
     <HEADER>
       <h1>Comfortbois MS</h1>
       <p onClick={() => clickEvent()}>ログイン</p>
@@ -15,21 +15,21 @@ const Header:React.FC<Props> = ({clickEvent}) => {
 }
 
 const HEADER = styled.header`
-  border-bottom: 1px solid #3CB371;
+  border-bottom: 1px solid #3cb371;
   display: flex;
   justify-content: space-between;
   position: relative;
-  h1{
+  h1 {
     line-height: 40px;
     font-size: 20px;
     margin-left: 5px;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
   }
-  p{
+  p {
     line-height: 40px;
     margin-right: 5px;
   }
-`;
+`
 
 export default Header
