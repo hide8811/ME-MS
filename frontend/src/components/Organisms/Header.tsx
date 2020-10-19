@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 type Props = {
   clickEvent?: any
@@ -8,7 +9,10 @@ type Props = {
 const Header: React.FC<Props> = ({ clickEvent }) => {
   return (
     <HEADER>
-      <h1>Comfortbois MS</h1>
+      <Link to='/'>
+        <h1>Comfortbois MS</h1>
+      </Link>
+  
       <p onClick={() => clickEvent()}>ログイン</p>
     </HEADER>
   )
@@ -29,6 +33,9 @@ const HEADER = styled.header`
   p {
     line-height: 40px;
     margin-right: 5px;
+  }
+  a {
+    color: #000;
   }
 `
 
