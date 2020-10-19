@@ -1,13 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import ContentBtn from '../Atoms/ContentBtn'
+import { Link } from 'react-router-dom'
 
 const ContentBtns = () => {
   return (
     <FLEX>
       <ContentBtn iconName="fas fa-calendar-check" />
       <ContentBtn iconName="fas fa-yen-sign" />
-      <ContentBtn iconName="fas fa-paper-plane" />
+
+      <Link to="/form">
+        <ContentBtn iconName="fas fa-paper-plane" />
+      </Link>
     </FLEX>
   )
 }
