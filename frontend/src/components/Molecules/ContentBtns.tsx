@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import ContentBtn from '../Atoms/ContentBtn'
 
 const ContentBtns = () => {
-  return(
+  return (
     <FLEX>
-      <ContentBtn iconName='fas fa-calendar-check'/>
-      <ContentBtn iconName='fas fa-yen-sign'/>
-      <ContentBtn iconName='fas fa-paper-plane'/>
+      <ContentBtn iconName="fas fa-calendar-check" />
+      <ContentBtn iconName="fas fa-yen-sign" />
+      <ContentBtn iconName="fas fa-paper-plane" />
     </FLEX>
   )
 }
@@ -17,6 +17,6 @@ const FLEX = styled.div`
   display: flex;
   text-align: center;
   flex-wrap: wrap;
-`;
+`
 
 export default ContentBtns

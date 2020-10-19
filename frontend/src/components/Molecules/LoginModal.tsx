@@ -7,18 +7,22 @@ type Props = {
   clickEvent: any
 }
 
-const LoginModal:React.FC<Props> = ({clickEvent}) => {
-  const eventStop = (e:any) => {
+const LoginModal: React.FC<Props> = ({ clickEvent }) => {
+  const eventStop = (e: any) => {
     e.preventDefault()
   }
-  return(
+  return (
     <LOGIN>
       <div className="close-back" onClick={clickEvent}></div>
       <form onSubmit={eventStop}>
-        <GlobalInput type='text' placeholder='id' label={'ログインID'} />
-        <GlobalInput type='password' placeholder='password' label={'パスワード'} />
+        <GlobalInput type="text" placeholder="id" label={'ログインID'} />
+        <GlobalInput
+          type="password"
+          placeholder="password"
+          label={'パスワード'}
+        />
         <div className="text-right">
-          <GlobalBtn btnName='btn' clickEvent={() => clickEvent}/>
+          <GlobalBtn btnName="btn" clickEvent={() => clickEvent} />
         </div>
       </form>
     </LOGIN>
@@ -26,7 +30,7 @@ const LoginModal:React.FC<Props> = ({clickEvent}) => {
 }
 
 const LOGIN = styled.div`
-  .close-back{
+  .close-back {
     position: fixed;
     display: flex;
     align-items: center;
@@ -38,12 +42,12 @@ const LOGIN = styled.div`
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
-  form{
+  form {
     position: absolute;
     background: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,.7);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     max-width: 500px;
     height: 195px;
     top: 0;
@@ -57,6 +61,6 @@ const LOGIN = styled.div`
       text-align: right;
     }
   }
-`;
+`
 
 export default LoginModal
