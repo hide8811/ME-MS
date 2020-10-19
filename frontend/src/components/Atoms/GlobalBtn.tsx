@@ -1,13 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
 
 type Props = {
-  btnName: string
+  btnName: string,
+  clickEvent?: any
 }
 
-const GlobalBtn:React.FC<Props> = ({btnName}) => {
+const GlobalBtn:React.FC<Props> = ({btnName,clickEvent}) => {
   return(
-  <button>{btnName}</button>
+    <BUTTON onClick={clickEvent()}>{btnName}</BUTTON>
   )
 }
+
+const BUTTON = styled.button`
+  padding: 5px 10px;
+  background: #3CB371;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+`;
 
 export default GlobalBtn
