@@ -4,6 +4,7 @@ import GlobalBtn from '../components/Atoms/GlobalBtn'
 import GlobalInput from '../components/Atoms/GlobalInput'
 import GlobalRadio from '../components/Atoms/GlobalRadio'
 import GlobalSelect from '../components/Atoms/GlobalSelect'
+import axios from 'axios'
 
 const Form = () => {
   const [age, updateValueAge] = useState('--')
@@ -15,22 +16,19 @@ const Form = () => {
   const [extended_time, updateValueExtend] = useState('--')
   const [deep_lymph, updateValueDeep] = useState('--')
   const datas:any = {
-    age,
-    date,
-    time,
-    course,
-    option: 'true',
-    cosplay: 'true',
-    extended_time,
-    deep_lymph
+    age: age,
+    date: date,
+    time: time,
+    course: course,
+    option: true,
+    cosplay: true,
+    extended_time: extended_time,
+    deep_lymph: deep_lymph
   }
 
   const sendData = (e:any) => {
     e.preventDefault();
-    return fetch('http://localhost:3000/customers',{
-      method: 'POST',
-      body: datas
-    })
+    axios.post('http://localhost:3000/customers',datas)
     .then(()=>console.log('success'))
     .catch(e=>console.log(e))
   }
