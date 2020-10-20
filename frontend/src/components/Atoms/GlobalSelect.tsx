@@ -43,9 +43,9 @@ const CONTAINER = styled.div`
     margin-bottom: 15px;
     background: #fff;
     background-image:
-      linear-gradient(45deg, transparent 50%, gray 50%),
-      linear-gradient(135deg, gray 50%, transparent 50%),
-      linear-gradient(to right, #ccc, #ccc);
+      linear-gradient(45deg, transparent 50%, #000 50%),
+      linear-gradient(135deg, #000 50%, transparent 50%),
+      linear-gradient(to right, #000, #000);
     background-position:
       calc(100% - 17px) calc(0.75em),
       calc(100% - 12px) calc(0.75em),
@@ -53,7 +53,7 @@ const CONTAINER = styled.div`
     background-size:
       5px 5px,
       5px 5px,
-      1px 1em;
+      1px 0.9em;
     background-repeat: no-repeat;
     &:focus {
       border: 1px solid #3cb371;
