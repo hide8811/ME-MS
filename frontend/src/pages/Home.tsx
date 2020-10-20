@@ -3,12 +3,12 @@ import GlobalBtn from '../components/Atoms/GlobalBtn'
 
 const Home:React.FC = () => {
 
-  const [data,getData] = useState('データ無し')
+  const [data,getData] = useState(null)
   const gettingData = () => {
     return fetch('http://localhost:3000/customers')
     .then(res => res.json())
-    .then(res => getData(res))
-    .catch(e=>getData(e))
+    .then(resjson => getData(resjson))
+    .catch(e=>console.log(e))
   }
 
   return(
