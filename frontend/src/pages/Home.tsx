@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 import GlobalBtn from '../components/Atoms/GlobalBtn'
+import axios from 'axios'
 
 const Home:React.FC = () => {
 
-  const [data,getData] = useState(null)
-  const gettingData = () => {
-    return fetch('http://localhost:3000/customers')
-    .then(res => res.json())
-    .then(resjson => getData(resjson))
-    .catch(e=>console.log(e))
-  }
+  const [data,getData]:any = useState({
+    age: '',
+    date: '',
+    time: '',
+    course: '',
+    option: true,
+    cosplay: true,
+    extended_time: '',
+    deep_lymph: ''
+  })
 
+  const gettingData = () => {
+    axios.get('http://localhost:3000/customers')
+    .then(res => getData(res.data[0]))
+  }
   return(
     <>
       <GlobalBtn btnName='取得！' clickEvent={gettingData} />
