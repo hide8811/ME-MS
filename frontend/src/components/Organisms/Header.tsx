@@ -19,7 +19,7 @@ const Header: React.FC<Props> = ({ clickEvent }) => {
 }
 
 const HEADER = styled.header`
-  border-bottom: 1px solid #3cb371;
+  border-bottom: 1px solid #00a914;
   display: flex;
   justify-content: space-between;
   position: relative;

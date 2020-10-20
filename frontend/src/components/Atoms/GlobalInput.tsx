@@ -51,7 +51,7 @@ const INPUTS = styled.div`
     padding-left: 5px;
     margin-bottom: 15px;
     &:focus {
-      border: 1px solid #3cb371;
+      border: 1px solid #00a914;
     }
   }
   input[type='date'],input[type='time'] {

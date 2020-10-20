@@ -56,7 +56,7 @@ const CONTAINER = styled.div`
       1px 0.9em;
     background-repeat: no-repeat;
     &:focus {
-      border: 1px solid #3cb371;
+      border: 1px solid #00a914;
     }
   }
 `;
