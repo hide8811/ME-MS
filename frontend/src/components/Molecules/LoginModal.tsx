@@ -8,13 +8,10 @@ type Props = {
 }
 
 const LoginModal: React.FC<Props> = ({ clickEvent }) => {
-  const eventStop = (e: any) => {
-    e.preventDefault()
-  }
   return (
     <LOGIN>
       <div className="close-back" onClick={clickEvent}></div>
-      <form onSubmit={eventStop}>
+      <form>
         <GlobalInput type="text" placeholder="id" label={'ログインID'} />
         <GlobalInput
           type="password"

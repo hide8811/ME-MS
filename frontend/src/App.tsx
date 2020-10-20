@@ -4,6 +4,7 @@ import ContentBtns from './components/Molecules/ContentBtns'
 import LoginModal from './components/Molecules/LoginModal'
 import Header from './components/Organisms/Header'
 import Form from './pages/Form'
+import Home from './pages/Home'
 
 const App: React.FC = () => {
   const [isSignIn, chageSign] = useState(false)
@@ -20,6 +21,7 @@ const App: React.FC = () => {
       <Router>
         <Header clickEvent={() => chageSign(!isSignIn)} />
         <Route exact path='/' component={ContentBtns} />
+        <Route exact path='/Home' component={Home} />
         <Route exact path='/form' component={Form} />
       </Router>
       {login}
