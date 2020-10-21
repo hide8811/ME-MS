@@ -12,12 +12,12 @@ const Home:React.FC = () => {
     option: true,
     cosplay: true,
     extended_time: '',
-    deep_lymph: ''
+    deep_lymph: '',
   })
 
   const gettingData = () => {
     axios.get('http://localhost:3000/customers')
-    .then(res => getData(res.data[0]))
+    .then(res => console.log(res.data))
   }
   return(
     <>
