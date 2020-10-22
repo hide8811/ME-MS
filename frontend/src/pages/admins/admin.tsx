@@ -1,27 +1,31 @@
 import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
-import GlobalBtn from '../components/Atoms/GlobalBtn'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const Home:React.FC = () => {
 
   const months = [
-    '1月 人数',
-    '2月 人数',
-    '3月 人数',
-    '4月 人数',
-    '5月 人数',
-    '6月 人数',
-    '7月 人数',
-    '8月 人数',
-    '9月 人数',
-    '10月 人数',
-    '11月 人数',
-    '12月 人数',
+    {id: 1, content: '1月 人数'},
+    {id: 2, content: '2月 人数'},
+    {id: 3, content: '3月 人数'},
+    {id: 4, content: '4月 人数'},
+    {id: 5, content: '5月 人数'},
+    {id: 6, content: '6月 人数'},
+    {id: 7, content: '7月 人数'},
+    {id: 8, content: '8月 人数'},
+    {id: 9, content: '9月 人数'},
+    {id: 10, content: '10月 人数'},
+    {id: 11, content: '11月 人数'},
+    {id: 12, content: '12月 人数'}
   ]
 
-  const monthButtons = months.map((val:string,ind:number)=> {
-    return <BUTTON key={ind}>{val}</BUTTON>
+  const monthButtons = months.map((val:any)=> {
+    return (
+      <Link key={val.id} to={'/admin/' + val.id}>
+        <BUTTON>{val.content}</BUTTON>
+      </Link>
+    )
   })
 
   // const [datas,getData]:any = useState([])

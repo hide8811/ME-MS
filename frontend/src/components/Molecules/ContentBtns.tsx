@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const ContentBtns = () => {
   return (
     <FLEX>
-      <Link to="/Home">
+      <Link to="/admin">
         <ContentBtn iconName="fas fa-calendar-check" />
       </Link>
 
