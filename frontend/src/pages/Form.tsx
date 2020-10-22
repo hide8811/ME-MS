@@ -16,14 +16,14 @@ const Form = () => {
   const [extended_time, updateValueExtend] = useState('--')
   const [deep_lymph, updateValueDeep] = useState('--')
   const datas:any = {
-    age: age,
-    date: date,
-    time: time,
-    course: course,
-    option: true,
-    cosplay: true,
-    extended_time: extended_time,
-    deep_lymph: deep_lymph
+    age,
+    date,
+    time,
+    course,
+    option,
+    cosplay,
+    extended_time,
+    deep_lymph
   }
 
   const sendData = (e:any) => {
