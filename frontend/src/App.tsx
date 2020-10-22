@@ -5,7 +5,7 @@ import LoginModal from './components/Molecules/LoginModal'
 import Header from './components/Organisms/Header'
 import Form from './pages/Form'
 import Admin from './pages/admins/admin'
-import Month from './pages/admins/month'
+import Admin_id from './pages/admins/_id'
 
 const App: React.FC = () => {
   const [isSignIn, chageSign] = useState(false)
@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <Header clickEvent={() => chageSign(!isSignIn)} />
         <Route exact path='/' component={ContentBtns} />
         <Route exact path='/admin' component={Admin} />
-        <Route path='/admin/:id' component={Month} />
+        <Route path='/admin/:id' component={Admin_id} />
         <Route exact path='/form' component={Form} />
       </Router>
       {login}

@@ -5,8 +5,10 @@ import axios from 'axios'
 
 const Home:React.FC = () => {
 
+  const [datas, getDatas] = useState([])
+  
   const months = [
-    {id: 1, content: '1月 人数'},
+    {id: 1, content: datas.length},
     {id: 2, content: '2月 人数'},
     {id: 3, content: '3月 人数'},
     {id: 4, content: '4月 人数'},
@@ -23,27 +25,17 @@ const Home:React.FC = () => {
   const monthButtons = months.map((val:any)=> {
     return (
       <Link key={val.id} to={'/admin/' + val.id}>
-        <BUTTON>{val.content}</BUTTON>
+        <BUTTON>{val.id}月 {val.content}人</BUTTON>
       </Link>
     )
   })
 
-  // const [datas,getData]:any = useState([])
-  
-  // useEffect(() => {
-  //   axios.get('http://localhost:3000/test.json')
-  //   .then(res => getData(res.data))
-  //   console.log('effect')
-  // },[])
+  useEffect(() => {
+    axios.get('http://localhost:3000/customers')
+    .then(res => getDatas(res.data))
+    console.log('effect')
+  },[])
 
-  // const showData = datas.map((val:any,ind:number)=>{
-  // return (
-  //   <ul key={ind}>
-  //     {val.age}
-  //     {val.age}
-  //   </ul>
-  // )
-  // })
   return(
     <>
       {monthButtons}
