@@ -1,16 +1,17 @@
 import React,{useState,useEffect} from 'react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import axios from 'axios'
 import {ages} from '../../controls/percentAge'
 
 const Month:React.FC = (props:any) => {
   
+  const urlParams = props.match.params.id
   const [datas, getDatas] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3000/customers',{
-      // date: '2020-10'
-    })
+    // const params = { getParams: '2020-' + urlParams }
+    // axios.get('http://localhost:3000/customers',{ params })
+    axios.get('http://localhost:3000/customers')
     .then(res => getDatas(res.data))
     console.log('effect')
   },[])
@@ -33,7 +34,6 @@ const Month:React.FC = (props:any) => {
   })
   console.log(arrays.length)
   console.log(datas.length)
-  const urlParams = props.match.params.id
   return(
     <div>
       {urlParams}
