@@ -26,8 +26,8 @@ const Home:React.FC = () => {
 
   const monthButtons = months.map((val:any)=> {
     return (
-      <Link key={val.id} to={'/admin/' + val.id}>
-        <BUTTON>{val.id}月 {val.content}人</BUTTON>
+      <Link key={ val.id } to={ '/admin/' + val.id }>
+        <BUTTON>{ val.id }月 { val.content }人</BUTTON>
       </Link>
     )
   })
