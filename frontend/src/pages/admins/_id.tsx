@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import FilterAge from '../../controls/FilterAge'
 
 const Month:React.FC = (props:any) => {
+  const urlParams:number = props.match.params.id
 
   return(
     <CONTAINER>
-      {/* {urlParams} */}
-      <FilterAge />
+      <FilterAge urlParams={urlParams}/>
     </CONTAINER>
   )
 }

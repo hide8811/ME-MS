@@ -22,8 +22,6 @@ const Home:React.FC = () => {
     {id: 12, content: '12月 人数'}
   ]
 
-
-
   const monthButtons = months.map((val:any)=> {
     return (
       <Link key={ val.id } to={ '/admin/' + val.id }>
@@ -33,8 +31,11 @@ const Home:React.FC = () => {
   })
 
   useEffect(() => {
-    axios.get('http://localhost:3000/customers')
-    .then(res => getDataObj(res.data))
+    const fetchData = async () => {
+      const result = await axios.get('http://localhost:3000/customers')
+      getDataObj(result.data)
+    }
+    fetchData()
   },[])
 
   return(
