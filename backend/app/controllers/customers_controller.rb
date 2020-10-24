@@ -19,6 +19,11 @@ class CustomersController < ApplicationController
     render json: @customer
   end
 
+  def month_search
+    @customers = Customer.search_all_month(params[:month])
+    render json: @customers
+  end
+
   private
 
   def customer_params

@@ -20,4 +20,9 @@ class Customer < ApplicationRecord
   def option_false?
     option == false
   end
+
+  def self.search_all_month(search_month)
+    search_date = "#{search_month}-01"
+    where(date: search_date.to_date.all_month)
+  end
 end
