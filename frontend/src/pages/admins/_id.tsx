@@ -27,18 +27,18 @@ const Month:React.FC = (props:any) => {
       numberCustomersArray.push(initialAgeFilter[i].agesArray.length)
     }
   }
+  
   numberCustomers()
-
   const divisionNumberCustomers = numberCustomersArray.map(val => val / 2)
   const percentabNumberCustomers = divisionNumberCustomers.map(val => val / datas.length * 100)
   const organizeNumberCustomers = percentabNumberCustomers.map(val => Math.round(val * 10) / 10)
 
   const showNumberCustomers = organizeNumberCustomers.map((val,index) => {
     // initialAgeFilter > controls
-    let valval = String({val})
-    const cok = {
-      width: {valval}, background: "#000"
-    }
+    // let valval = String({val})
+    // const cok = {
+    //   width: {valval}, background: "#000"
+    // }
     return (
     <div className='flex-box' key={index}>
       <pre>{ initialAgeFilter[index].caseTitle} : </pre>
