@@ -52,6 +52,7 @@ export const FilterAge = (users:string) => {
       initialAgeFilter[11].agesArray.push(1)
       break;
     default:
+      console.log('run')
       return null
   }
 }
