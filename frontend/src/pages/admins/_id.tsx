@@ -14,11 +14,6 @@ const Month:React.FC = (props:any) => {
 
 const CONTAINER = styled.div`
   padding: 10px;
-  .flex-box {
-    display: flex;
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
 `;
 
 export default Month

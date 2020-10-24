@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import styled from 'styled-components'
 import axios from 'axios'
 
 type Props = {
@@ -26,7 +27,7 @@ const FilterAge:React.FC<Props> = ({urlParams}) => {
   },[])
 
   const initialAgeFilter:any = [
-    {caseTitle: '10代', agesArray:[]},
+    {caseTitle: '10代後半', agesArray:[]},
     {caseTitle: '20代前半', agesArray:[]},
     {caseTitle: '20代後半', agesArray:[]},
     {caseTitle: '30代前半', agesArray:[]},
@@ -106,10 +107,44 @@ const FilterAge:React.FC<Props> = ({urlParams}) => {
   })
   
   return(
-  <>
-    {showNumberCustomers}
-  </>
+  <CONTAINER>
+    <h1>{urlParams}月の結果</h1>
+    <h2>顧客の年齢層</h2>
+    <div className="result">
+      {showNumberCustomers}
+    </div>
+    {/* <h2>顧客の年齢層</h2>
+    <div className="result">
+      {showNumberCustomers}
+    </div> */}
+  </CONTAINER>
   )
 }
+
+const CONTAINER = styled.div`
+  h1{
+    font-size: 20px;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 5px;
+    margin: 5px 0 15px;
+  }
+  h2{
+    margin-bottom: 10px;
+  }
+  .result{
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    .flex-box {
+      display: flex;
+      margin-bottom: 10px;
+      font-size: 18px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+`;
 
 export default FilterAge

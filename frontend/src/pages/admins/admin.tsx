@@ -25,7 +25,7 @@ const Home:React.FC = () => {
   const monthButtons = months.map((val:any)=> {
     return (
       <Link key={ val.id } to={ '/admin/' + val.id }>
-        <BUTTON>{ val.id }月 { val.content }人</BUTTON>
+        <button>{ val.id }月 { val.content }人</button>
       </Link>
     )
   })
@@ -39,24 +39,34 @@ const Home:React.FC = () => {
   },[])
 
   return(
-    <>
+    <CONTAINER>
+      <div className="flex">
+        <div><i className="fas fa-chevron-left"></i></div>
+        <div>2020</div>
+        <div><i className="fas fa-chevron-right"></i></div>
+      </div>
       {monthButtons}
-    </>
+    </CONTAINER>
   )
 }
 
-const BUTTON = styled.button`
-  width: 95%;
-  display: block;
-  margin: 0 auto;
-  background: #00a914;
-  margin-top: 20px;
-  color: #fff;
-  font-size: 20px;
-  line-height: 40px;
-  border-radius: 4px;
-  &:last-child{
-    margin-bottom: 20px;
+const CONTAINER = styled.div`
+  .flex{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 10px auto 15px;
+    font-size: 20px;
+  }
+  button{
+    width: 95%;
+    display: block;
+    margin: 0 auto 20px;
+    background: #00a914;
+    color: #fff;
+    font-size: 20px;
+    line-height: 40px;
+    border-radius: 4px;
   }
 `;
 
