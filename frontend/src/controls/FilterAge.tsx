@@ -1,13 +1,25 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 
-const FilterAge = () => {
+type Props = {
+  urlParams: number
+}
+
+type GetParams = {
+  month: string
+}
+
+const FilterAge:React.FC<Props> = ({urlParams}) => {
 
   const [datas, setData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('http://localhost:3000/customers')
+      const params:GetParams = { month: '2020-' + urlParams }
+      // paramsはAxiosRequestConfigに指定されている。
+      // typescriptでaxiosにパラメータをつける場合はパラメータの名前はparamsにしなければならない。
+      const result = await axios.get
+        ('http://localhost:3000/customers/month_search', { params } )
       setData(result.data)
     }
     fetchData()
@@ -85,7 +97,10 @@ const FilterAge = () => {
     return (
     <div className='flex-box' key={index}>
       <pre>{ initialAgeFilter[index].caseTitle} : </pre>
-      <pre> {val}%</pre>
+      {val?
+        <pre> {val}%</pre>:
+        <pre> 0%</pre>
+      }
     </div>
     )
   })
