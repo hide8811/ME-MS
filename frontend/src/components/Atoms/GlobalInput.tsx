@@ -13,10 +13,17 @@ type Props = {
   updateValue?: any
 }
 
-const GlobalInput: React.FC<Props> = ({label,forName,id,type,placeholder,inputName,updateValue}) => {
-
-  const [text,updateText] = useState('')
-  const handleChange = (val:string) => {
+const GlobalInput: React.FC<Props> = ({
+  label,
+  forName,
+  id,
+  type,
+  placeholder,
+  inputName,
+  updateValue,
+}) => {
+  const [text, updateText] = useState('')
+  const handleChange = (val: string) => {
     updateText(val)
     updateValue(val)
   }
@@ -30,7 +37,7 @@ const GlobalInput: React.FC<Props> = ({label,forName,id,type,placeholder,inputNa
         placeholder={placeholder}
         name={inputName}
         value={text}
-        onChange={(e)=>handleChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
       />
     </INPUTS>
   )
@@ -54,7 +61,8 @@ const INPUTS = styled.div`
       border: 1px solid #00a914;
     }
   }
-  input[type='date'],input[type='time'] {
+  input[type='date'],
+  input[type='time'] {
     background: #fff;
     padding-right: 7px;
   }

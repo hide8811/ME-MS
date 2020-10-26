@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import GlobalBtn from '../components/Atoms/GlobalBtn'
 import GlobalInput from '../components/Atoms/GlobalInput'
@@ -15,7 +15,7 @@ const Form = () => {
   const [cosplay, updateValueCosplay] = useState('無し')
   const [extended_time, updateValueExtend] = useState('--')
   const [deep_lymph, updateValueDeep] = useState('--')
-  const datas:any = {
+  const datas: any = {
     age,
     date,
     time,
@@ -23,28 +23,63 @@ const Form = () => {
     option,
     cosplay,
     extended_time,
-    deep_lymph
+    deep_lymph,
   }
 
-  const sendData = (e:any) => {
-    e.preventDefault();
-    axios.post('http://localhost:3000/customers',datas)
-    .then(()=>console.log('success'))
-    .catch(e=>console.log(e))
+  const sendData = (e: any) => {
+    e.preventDefault()
+    axios
+      .post('http://localhost:3000/customers', datas)
+      .then(() => console.log('success'))
+      .catch((e) => console.log(e))
   }
 
   return (
     <CONTAINER onSubmit={sendData}>
-      <GlobalSelect questions={questions.age} label={'大まかな年齢'} updateValue={updateValueAge} />
-      <GlobalInput type="date" label={'利用日時'} updateValue={updateValueDate} />
-      <GlobalInput type="time" label={'利用時間'} updateValue={updateValueTime} />
-      <GlobalSelect questions={questions.course} label={'利用コース'} updateValue={updateValueCorse} />
-      <GlobalRadio choices={questions.choice} label={'オプションの有無'} name={'choice-option'} updateValue={updateValueOption} />
-      <GlobalRadio choices={questions.choice} label={'コスプレの有無'} name={'choice-cosplay'} updateValue={updateValueCosplay} />
-      <GlobalSelect questions={questions.extend} label={'延長時間'} updateValue={updateValueExtend} />
-      <GlobalSelect questions={questions.deep} label={'ディープリンパ'} updateValue={updateValueDeep} />
-      <div className='right'>
-        <GlobalBtn btnName='送信する' />
+      <GlobalSelect
+        questions={questions.age}
+        label={'大まかな年齢'}
+        updateValue={updateValueAge}
+      />
+      <GlobalInput
+        type="date"
+        label={'利用日時'}
+        updateValue={updateValueDate}
+      />
+      <GlobalInput
+        type="time"
+        label={'利用時間'}
+        updateValue={updateValueTime}
+      />
+      <GlobalSelect
+        questions={questions.course}
+        label={'利用コース'}
+        updateValue={updateValueCorse}
+      />
+      <GlobalRadio
+        choices={questions.choice}
+        label={'オプションの有無'}
+        name={'choice-option'}
+        updateValue={updateValueOption}
+      />
+      <GlobalRadio
+        choices={questions.choice}
+        label={'コスプレの有無'}
+        name={'choice-cosplay'}
+        updateValue={updateValueCosplay}
+      />
+      <GlobalSelect
+        questions={questions.extend}
+        label={'延長時間'}
+        updateValue={updateValueExtend}
+      />
+      <GlobalSelect
+        questions={questions.deep}
+        label={'ディープリンパ'}
+        updateValue={updateValueDeep}
+      />
+      <div className="right">
+        <GlobalBtn btnName="送信する" />
       </div>
     </CONTAINER>
   )
@@ -63,22 +98,10 @@ const questions = {
     '50代後半',
     '60代前半',
     '60代後半',
-    '70代以上'
+    '70代以上',
   ],
-  course: [
-    '60min',
-    '90min',
-    '120min',
-    '150min',
-    '180min'
-  ],
-  extend: [
-    '無し',
-    '30min',
-    '60min',
-    '90min',
-    '120min'
-  ],
+  course: ['60min', '90min', '120min', '150min', '180min'],
+  extend: ['無し', '30min', '60min', '90min', '120min'],
   deep: [
     '無し',
     '10min',
@@ -90,19 +113,16 @@ const questions = {
     '70min',
     '80min',
     '90min',
-    '100min'
+    '100min',
   ],
-  choice: [
-    '無し',
-    '有り'
-  ]
+  choice: ['無し', '有り'],
 }
 
 const CONTAINER = styled.form`
   padding: 15px;
-  .right{
+  .right {
     text-align: right;
   }
-`;
+`
 
 export default Form
