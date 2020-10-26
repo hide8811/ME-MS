@@ -1,16 +1,31 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { FilterAge, FilterTime, FilterWeek } from '../../controls'
+import axios from 'axios'
+import { FilterAge, FilterCourse, FilterTime, FilterWeek } from '../../controls'
 
 const Month:React.FC = (props:any) => {
   const urlParams:number = props.match.params.id
+  const [datas, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const params = { month: '2020-' + urlParams }
+      // paramsはAxiosRequestConfigに指定されている。
+      // typescriptでaxiosにパラメータをつける場合はパラメータの名前はparamsにしなければならない。
+      const result = await axios.get
+        ('http://localhost:3000/customers/month_search', { params } )
+      setData(result.data)
+    }
+    fetchData()
+  },[])
 
   return(
     <CONTAINER>
       <h1>{urlParams}月の結果</h1>
-      <FilterAge urlParams={urlParams} />
-      <FilterWeek urlParams={urlParams} />
-      <FilterTime urlParams={urlParams} />
+      <FilterAge datas={datas} />
+      <FilterWeek datas={datas} />
+      <FilterTime datas={datas} />
+      <FilterCourse datas={datas} />
     </CONTAINER>
   )
 }
