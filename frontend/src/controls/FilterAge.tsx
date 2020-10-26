@@ -1,30 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 
 type Props = {
-  urlParams: number
+  datas: any
 }
 
-type GetParams = {
-  month: string
-}
-
-const FilterAge:React.FC<Props> = ({urlParams}) => {
-
-  const [datas, setData] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const params:GetParams = { month: '2020-' + urlParams }
-      // paramsはAxiosRequestConfigに指定されている。
-      // typescriptでaxiosにパラメータをつける場合はパラメータの名前はparamsにしなければならない。
-      const result = await axios.get
-        ('http://localhost:3000/customers/month_search', { params } )
-      setData(result.data)
-    }
-    fetchData()
-  },[])
+const FilterAge:React.FC<Props> = ({datas}) => {
 
   const initialAgeFilter:any = [
     {caseTitle: '10代後半', agesArray:[]},
@@ -108,34 +89,24 @@ const FilterAge:React.FC<Props> = ({urlParams}) => {
   
   return(
   <CONTAINER>
-    <h1>{urlParams}月の結果</h1>
-    <h2>顧客の年齢層</h2>
+    <h2>年齢別割合</h2>
     <div className="result">
       {showNumberCustomers}
     </div>
-    {/* <h2>顧客の年齢層</h2>
-    <div className="result">
-      {showNumberCustomers}
-    </div> */}
   </CONTAINER>
   )
 }
 
 const CONTAINER = styled.div`
-  h1{
-    font-size: 20px;
-    border-bottom: 1px solid #aaa;
-    padding-bottom: 5px;
-    margin: 5px 0 15px;
-  }
   h2{
+    padding-left: 3px;
     margin-bottom: 10px;
   }
   .result{
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     .flex-box {
       display: flex;
       margin-bottom: 10px;
