@@ -107,7 +107,7 @@ const FilterAge:React.FC<Props> = ({urlParams}) => {
   
   return(
   <CONTAINER>
-    <h2>顧客の年齢層</h2>
+    <h2>年齢別割合</h2>
     <div className="result">
       {showNumberCustomers}
     </div>
@@ -117,13 +117,14 @@ const FilterAge:React.FC<Props> = ({urlParams}) => {
 
 const CONTAINER = styled.div`
   h2{
+    padding-left: 3px;
     margin-bottom: 10px;
   }
   .result{
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     .flex-box {
       display: flex;
       margin-bottom: 10px;
