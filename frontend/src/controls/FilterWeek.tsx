@@ -16,8 +16,8 @@ const FilterWeek: React.FC<Props> = ({ datas }) => {
     { caseTitle: '土曜日', weekArray: [] },
   ]
 
-  const FilterCase = (users: string) => {
-    switch (users) {
+  const FilterCase = (user_case: string) => {
+    switch (user_case) {
       case '日曜日':
         initialWeekFilter[0].weekArray.push(1)
         break
@@ -87,6 +87,7 @@ const CONTAINER = styled.div`
   h2 {
     padding-left: 3px;
     margin-bottom: 10px;
+    color: #f00;
   }
   .result {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

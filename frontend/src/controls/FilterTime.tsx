@@ -5,7 +5,9 @@ type Props = {
   datas: any
 }
 
+
 const FilterTime: React.FC<Props> = ({ datas }) => {
+
   const initialTimeFilter: any = [
     { caseTitle: '12時〜13時59分', timeArray: [] },
     { caseTitle: '14時〜15時59分', timeArray: [] },
@@ -17,8 +19,8 @@ const FilterTime: React.FC<Props> = ({ datas }) => {
     { caseTitle: '26時〜27時59分', timeArray: [] },
   ]
 
-  const FilterCase = (users: string) => {
-    switch (users) {
+  const FilterCase = (user_case: string) => {
+    switch (user_case) {
       case '12':
       case '13':
         initialTimeFilter[0].timeArray.push(1)
@@ -89,6 +91,7 @@ const CONTAINER = styled.div`
   h2 {
     padding-left: 3px;
     margin-bottom: 10px;
+    color: #f00;
   }
   .result {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

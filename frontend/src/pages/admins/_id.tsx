@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { FilterAge, FilterCourse, FilterTime, FilterWeek } from '../../controls'
+import { FilterAge, FilterCourse, FilterOption, FilterOptionCosplay, FilterOptionDeep, FilterOptionExtend, FilterTime, FilterWeek } from '../../controls'
 
 const Month: React.FC = (props: any) => {
   const urlParams: number = props.match.params.id
@@ -28,6 +28,7 @@ const Month: React.FC = (props: any) => {
       <FilterWeek datas={datas} />
       <FilterTime datas={datas} />
       <FilterCourse datas={datas} />
+      <FilterOption datas={datas} />
     </CONTAINER>
   )
 }
