@@ -5,9 +5,10 @@ type Props = {
   label: string
   questions: Array<string>
   updateValue: any
+  isRequired?: string
 }
 
-const GlobalSelect: React.FC<Props> = ({ label, questions, updateValue }) => {
+const GlobalSelect: React.FC<Props> = ({ label, questions, updateValue, isRequired }) => {
   const handleChange = (e: any) => {
     updateValue(e.target.value)
   }
@@ -17,7 +18,15 @@ const GlobalSelect: React.FC<Props> = ({ label, questions, updateValue }) => {
 
   return (
     <CONTAINER>
-      <label>{label}</label>
+      <label>
+        {label}
+        {
+          isRequired?
+          <span>{isRequired}</span>
+          :
+          <></>
+        }
+      </label>
       <select onChange={handleChange}>
         <option hidden>選択してください</option>
         {option}
@@ -31,6 +40,16 @@ const CONTAINER = styled.div`
     display: block;
     width: 100%;
     margin-bottom: 7px;
+    span {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 12px;
+      background: #f00;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0 4px;
+      line-height: 18px;
+    }
   }
   select {
     width: 100%;

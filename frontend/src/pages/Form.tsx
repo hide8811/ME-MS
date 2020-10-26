@@ -11,8 +11,8 @@ const Form = () => {
   const [course, updateValueCorse] = useState('')
   const [date, updateValueDate] = useState('')
   const [time, updateValueTime] = useState('')
-  const [option, updateValueOption] = useState(false)
-  const [cosplay, updateValueCosplay] = useState(false)
+  const [option, updateValueOption] = useState('無し')
+  const [cosplay, updateValueCosplay] = useState('無し')
   const [extended_time, updateValueExtend] = useState('無し')
   const [deep_lymph, updateValueDeep] = useState('無し')
   const datas: any = {
@@ -26,12 +26,24 @@ const Form = () => {
     deep_lymph,
   }
 
-  const sendData = (e: any) => {
-    e.preventDefault()
-    axios
-      .post('http://localhost:3000/customers', datas)
-      .then(() => console.log('success'))
-      .catch((e) => console.log(e))
+  const sendData = (e: React.FormEvent<HTMLFormElement>) => {
+    if(age === '' || date === '' || time === '' || course === '' ) {
+      alert('必須の項目は全て入力してください')
+      e.preventDefault()
+    } else {
+      const isCorrect = window.confirm(
+        `大まかな年齢：${age}\n利用日時：${date}\n利用時間：${time}\n利用コース：${course}\nオプションの有無：${option}\n衣装チェンジの有無：${cosplay}\n延長時間：${extended_time}\nディープリンパ：${deep_lymph}\n以上の内容でお間違いないですか？`
+        )
+      if (isCorrect) {
+        axios
+          .post('http://localhost:3000/customers', datas)
+          .then(() => alert('送信しました'))
+          .catch((e) => console.log(e))
+      } else {
+        e.preventDefault()
+      }
+    }
+
   }
 
   return (
@@ -40,47 +52,64 @@ const Form = () => {
         questions={questions.age}
         label={'大まかな年齢'}
         updateValue={updateValueAge}
+        isRequired={'必須'}
       />
       <GlobalInput
         type="date"
         label={'利用日時'}
         updateValue={updateValueDate}
+        isRequired={'必須'}
       />
       <GlobalInput
         type="time"
         label={'利用時間'}
         updateValue={updateValueTime}
+        isRequired={'必須'}
       />
       <GlobalSelect
         questions={questions.course}
         label={'利用コース'}
         updateValue={updateValueCorse}
+        isRequired={'必須'}
       />
       <GlobalRadio
         choices={questions.choice}
         label={'オプションの有無'}
         name={'choice-option'}
         updateValue={updateValueOption}
+        isRequired={'必須'}
       />
-      <GlobalRadio
-        choices={questions.choice}
-        label={'コスプレの有無'}
-        name={'choice-cosplay'}
-        updateValue={updateValueCosplay}
-      />
-      <GlobalSelect
-        questions={questions.extend}
-        label={'延長時間'}
-        updateValue={updateValueExtend}
-      />
-      <GlobalSelect
-        questions={questions.deep}
-        label={'ディープリンパ'}
-        updateValue={updateValueDeep}
-      />
-      <div className="right">
-        <GlobalBtn btnName="送信する" />
-      </div>
+      {
+        (() => {
+          if (option === '有り') {
+            return (
+              <div>
+                <GlobalRadio
+                  choices={questions.choice}
+                  label={'コスプレの有無'}
+                  name={'choice-cosplay'}
+                  updateValue={updateValueCosplay}
+                />
+                <GlobalSelect
+                  questions={questions.extend}
+                  label={'延長時間'}
+                  updateValue={updateValueExtend}
+                />
+                <GlobalSelect
+                  questions={questions.deep}
+                  label={'ディープリンパ'}
+                  updateValue={updateValueDeep}
+                />
+              </div>
+            )
+          } else {
+            return <></>
+          }
+        })()
+      }
+        <div className="right">
+          <GlobalBtn btnName="送信する" />
+        </div>
     </CONTAINER>
   )
 }
