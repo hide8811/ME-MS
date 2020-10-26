@@ -1,11 +1,10 @@
-import React,{useState,useEffect} from 'react'
+import React,{ useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 
 type Props = {
   urlParams: number
 }
-
 type GetParams = {
   month: string
 }
@@ -108,26 +107,15 @@ const FilterAge:React.FC<Props> = ({urlParams}) => {
   
   return(
   <CONTAINER>
-    <h1>{urlParams}月の結果</h1>
     <h2>顧客の年齢層</h2>
     <div className="result">
       {showNumberCustomers}
     </div>
-    {/* <h2>顧客の年齢層</h2>
-    <div className="result">
-      {showNumberCustomers}
-    </div> */}
   </CONTAINER>
   )
 }
 
 const CONTAINER = styled.div`
-  h1{
-    font-size: 20px;
-    border-bottom: 1px solid #aaa;
-    padding-bottom: 5px;
-    margin: 5px 0 15px;
-  }
   h2{
     margin-bottom: 10px;
   }
