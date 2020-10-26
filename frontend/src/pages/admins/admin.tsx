@@ -5,23 +5,54 @@ import axios from 'axios'
 
 const Home:React.FC = () => {
 
-  const [dataObj, getDataObj] = useState([])
+  const [dataObj1, getDataObj1] = useState([])
+  const [dataObj2, getDataObj2] = useState([])
+  const [dataObj3, getDataObj3] = useState([])
+  const [dataObj4, getDataObj4] = useState([])
+  const [dataObj5, getDataObj5] = useState([])
+  const [dataObj6, getDataObj6] = useState([])
+  const [dataObj7, getDataObj7] = useState([])
+  const [dataObj8, getDataObj8] = useState([])
+  const [dataObj9, getDataObj9] = useState([])
+  const [dataObj10, getDataObj10] = useState([])
+  const [dataObj11, getDataObj11] = useState([])
+  const [dataObj12, getDataObj12] = useState([])
   
   const months = [
-    {id: 1, content: dataObj.length},
-    {id: 2, content: '2月 人数'},
-    {id: 3, content: '3月 人数'},
-    {id: 4, content: '4月 人数'},
-    {id: 5, content: '5月 人数'},
-    {id: 6, content: '6月 人数'},
-    {id: 7, content: '7月 人数'},
-    {id: 8, content: '8月 人数'},
-    {id: 9, content: '9月 人数'},
-    {id: 10, content: '10月 人数'},
-    {id: 11, content: '11月 人数'},
-    {id: 12, content: '12月 人数'}
+    {id: 1, content: dataObj1.length},
+    {id: 2, content: dataObj2.length},
+    {id: 3, content: dataObj3.length},
+    {id: 4, content: dataObj4.length},
+    {id: 5, content: dataObj5.length},
+    {id: 6, content: dataObj6.length},
+    {id: 7, content: dataObj7.length},
+    {id: 8, content: dataObj8.length},
+    {id: 9, content: dataObj9.length},
+    {id: 10, content: dataObj10.length},
+    {id: 11, content: dataObj11.length},
+    {id: 12, content: dataObj12.length}
   ]
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const params = { year: '2020' }
+      const result = await axios.get('http://localhost:3000/customers', { params } )
+      getDataObj1(result.data.January)
+      getDataObj2(result.data.February)
+      getDataObj3(result.data.March)
+      getDataObj4(result.data.April)
+      getDataObj5(result.data.May)
+      getDataObj6(result.data.June)
+      getDataObj7(result.data.July)
+      getDataObj8(result.data.August)
+      getDataObj9(result.data.September)
+      getDataObj10(result.data.October)
+      getDataObj11(result.data.November)
+      getDataObj12(result.data.December)
+    }
+    fetchData()
+  },[])
+  
   const monthButtons = months.map((val:any)=> {
     return (
       <Link key={ val.id } to={ '/admin/' + val.id }>
@@ -29,14 +60,6 @@ const Home:React.FC = () => {
       </Link>
     )
   })
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('http://localhost:3000/customers')
-      getDataObj(result.data)
-    }
-    fetchData()
-  },[])
 
   return(
     <CONTAINER>
