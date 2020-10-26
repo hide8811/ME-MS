@@ -14,8 +14,8 @@ const FilterCourse: React.FC<Props> = ({ datas }) => {
     { caseTitle: '180min', courseArray: [] },
   ]
 
-  const FilterCase = (users: string) => {
-    switch (users) {
+  const FilterCase = (user_case: string) => {
+    switch (user_case) {
       case '60min':
         initialCourseFilter[0].courseArray.push(1)
         break
@@ -67,6 +67,7 @@ const CONTAINER = styled.div`
   h2 {
     padding-left: 3px;
     margin-bottom: 10px;
+    color: #f00;
   }
   .result {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

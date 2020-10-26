@@ -2,10 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 type Props = {
-  datas: any
+  datas: Array<any>
 }
 
 const FilterAge: React.FC<Props> = ({ datas }) => {
+  console.log(datas)
   const initialAgeFilter: any = [
     { caseTitle: '10代後半', agesArray: [] },
     { caseTitle: '20代前半', agesArray: [] },
@@ -21,8 +22,8 @@ const FilterAge: React.FC<Props> = ({ datas }) => {
     { caseTitle: '70代以上', agesArray: [] },
   ]
 
-  const FilterCase = (users: string) => {
-    switch (users) {
+  const FilterCase = (user_case: string) => {
+    switch (user_case) {
       case '10代':
         initialAgeFilter[0].agesArray.push(1)
         break
@@ -94,6 +95,7 @@ const CONTAINER = styled.div`
   h2 {
     padding-left: 3px;
     margin-bottom: 10px;
+    color: #f00;
   }
   .result {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

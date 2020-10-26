@@ -7,14 +7,14 @@ import GlobalSelect from '../components/Atoms/GlobalSelect'
 import axios from 'axios'
 
 const Form = () => {
-  const [age, updateValueAge] = useState('--')
-  const [course, updateValueCorse] = useState('--')
-  const [date, updateValueDate] = useState('--')
-  const [time, updateValueTime] = useState('--')
-  const [option, updateValueOption] = useState('無し')
-  const [cosplay, updateValueCosplay] = useState('無し')
-  const [extended_time, updateValueExtend] = useState('--')
-  const [deep_lymph, updateValueDeep] = useState('--')
+  const [age, updateValueAge] = useState('')
+  const [course, updateValueCorse] = useState('')
+  const [date, updateValueDate] = useState('')
+  const [time, updateValueTime] = useState('')
+  const [option, updateValueOption] = useState(false)
+  const [cosplay, updateValueCosplay] = useState(false)
+  const [extended_time, updateValueExtend] = useState('無し')
+  const [deep_lymph, updateValueDeep] = useState('無し')
   const datas: any = {
     age,
     date,
