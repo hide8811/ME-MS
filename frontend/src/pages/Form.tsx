@@ -27,15 +27,23 @@ const Form = () => {
   }
 
   const sendData = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // if(age && date && time && course &&  === null){
+    if(age === '' || date === '' || time === '' || course === '' ) {
+      alert('必須の項目は全て入力してください')
+      e.preventDefault()
+    } else {
+      const isCorrect = window.confirm(
+        `大まかな年齢：${age}\n利用日時：${date}\n利用時間：${time}\n利用コース：${course}\nオプションの有無：${option}\n衣装チェンジの有無：${cosplay}\n延長時間：${extended_time}\nディープリンパ：${deep_lymph}\n以上の内容でお間違いないですか？`
+        )
+      if (isCorrect) {
+        axios
+          .post('http://localhost:3000/customers', datas)
+          .then(() => alert('送信しました'))
+          .catch((e) => console.log(e))
+      } else {
+        e.preventDefault()
+      }
+    }
 
-    // }
-
-    axios
-      .post('http://localhost:3000/customers', datas)
-      .then(() => console.log('success'))
-      .catch((e) => console.log(e))
   }
 
   return (
