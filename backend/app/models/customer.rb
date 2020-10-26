@@ -21,6 +21,19 @@ class Customer < ApplicationRecord
     option == false
   end
 
+  def self.by_month(year)
+    customers = where(date: Date.new(year.to_i).all_year)
+    customers_by_month = {}
+
+    12.times do |n|
+      n += 1
+      month = Date.new(year.to_i, n).strftime('%B')
+      customers_by_month.store(month, customers.select { |c| c[:date].to_date.strftime('%B') == month })
+    end
+
+    customers_by_month
+  end
+
   def self.search_all_month(search_month)
     search_date = "#{search_month}-01"
     where(date: search_date.to_date.all_month)

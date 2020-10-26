@@ -228,6 +228,44 @@ RSpec.describe Customer, type: :model do
   end
 
   describe 'method' do
+    describe '#by_month' do
+      let!(:customers_a) { create_list(:customer, 5, date: Faker::Date.between(from: '2020-01-01', to: '2020-01-31')) }
+      let!(:customers_b) { create_list(:customer, 6, date: Faker::Date.between(from: '2020-02-01', to: '2020-02-28')) }
+      let!(:customer) { create(:customer, date: Faker::Date.between(from: '2019-01-01', to: '2019-01-31')) }
+
+      context 'データがある場合' do
+        context "Customer.by_month('2020')['January']" do
+          subject { Customer.by_month('2020')['January'].map { |j| j['id'] } }
+
+          it { expect(Customer.by_month('2020')['January'].length).to eq 5 }
+
+          it { is_expected.to eq(customers_a.map { |c| c['id'] }) }
+
+          it { is_expected.not_to include(customers_b.map { |c| c['id'] }) }
+
+          it { is_expected.not_to include customer.id }
+        end
+
+        context "Customer.by_month('2020')['February']" do
+          subject { Customer.by_month('2020')['February'].map { |j| j['id'] } }
+
+          it { expect(Customer.by_month('2020')['February'].length).to eq 6 }
+
+          it { is_expected.to eq(customers_b.map { |c| c['id'] }) }
+
+          it { is_expected.not_to include(customers_b.map { |c| c['id'] }) }
+        end
+      end
+
+      context 'データがない場合' do
+        context "Customer.by_month('2020')['March']" do
+          it { expect(Customer.by_month('2020')['March'].length).to eq 0 }
+
+          it { expect(Customer.by_month('2020')['March']).to eq [] }
+        end
+      end
+    end
+
     describe '#search_all_month' do
       let!(:customers) { create_list(:customer, 10, date: Faker::Date.between(from: '2020-01-01', to: '2020-01-31')) }
       let!(:customer) { create(:customer, date: Faker::Date.between(from: '2020-02-01', to: '2020-02-28')) }
