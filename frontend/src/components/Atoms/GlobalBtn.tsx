@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 type Props = {
   btnName: string
-  clickEvent?: any
+  clickEvent?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const GlobalBtn: React.FC<Props> = ({ btnName, clickEvent }) => {

@@ -9,10 +9,10 @@ type Props = {
 const Header: React.FC<Props> = ({ clickEvent }) => {
   return (
     <HEADER>
-      <Link to='/'>
+      <Link to="/">
         <h1>Comfortbois MS</h1>
       </Link>
-  
+
       <p onClick={() => clickEvent()}>ログイン</p>
     </HEADER>
   )

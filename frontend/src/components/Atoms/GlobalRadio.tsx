@@ -8,17 +8,21 @@ type Props = {
   updateValue: any
 }
 
-const GlobalRadio:React.FC<Props> = ({label,choices,name,updateValue}) => {
-
+const GlobalRadio: React.FC<Props> = ({
+  label,
+  choices,
+  name,
+  updateValue,
+}) => {
   const [isChoice, changeChoice] = useState(choices[0])
   const handleChoice = () => {
-    if(isChoice === choices[0]) {
+    if (isChoice === choices[0]) {
       changeChoice(choices[1])
     } else {
       changeChoice(choices[0])
     }
   }
-  const updateValueChoice = (e:any) => {
+  const updateValueChoice = (e: any) => {
     updateValue(e.target.value)
   }
 
@@ -26,31 +30,33 @@ const GlobalRadio:React.FC<Props> = ({label,choices,name,updateValue}) => {
     return (
       <div key={index}>
         <input
-          type='radio'
+          type="radio"
           name={name}
-          id={name+index}
+          id={name + index}
           value={val}
           checked={val === isChoice}
           onClick={handleChoice}
           onChange={updateValueChoice}
         />
-        <label className='choice' htmlFor={name+index}>{val}</label>
+        <label className="choice" htmlFor={name + index}>
+          {val}
+        </label>
       </div>
     )
   })
 
-  return(
+  return (
     <CONTAINER>
-      <label className='label-name' htmlFor={name}>{label}</label>
-      <div className='flex'>
-        {choicesInput}
-      </div>
+      <label className="label-name" htmlFor={name}>
+        {label}
+      </label>
+      <div className="flex">{choicesInput}</div>
     </CONTAINER>
   )
 }
 
 const CONTAINER = styled.div`
-  .flex{
+  .flex {
     display: flex;
     margin-bottom: 15px;
   }
@@ -59,7 +65,7 @@ const CONTAINER = styled.div`
     width: 100%;
     margin-bottom: 7px;
   }
-  .choice{
+  .choice {
     display: block;
     padding: 5px 10px;
     border-radius: 4px;
@@ -68,13 +74,13 @@ const CONTAINER = styled.div`
     background: #ccc;
     cursor: pointer;
   }
-  input[type=radio] {
+  input[type='radio'] {
     display: none;
-    &:checked + .choice{
+    &:checked + .choice {
       background: #00a914;
       color: #fff;
     }
   }
-`;
+`
 
 export default GlobalRadio

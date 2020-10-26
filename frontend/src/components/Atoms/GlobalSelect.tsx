@@ -7,16 +7,15 @@ type Props = {
   updateValue: any
 }
 
-const GlobalSelect: React.FC<Props> = ({label, questions, updateValue}) => {
-  
-  const handleChange = (e:any) => {
+const GlobalSelect: React.FC<Props> = ({ label, questions, updateValue }) => {
+  const handleChange = (e: any) => {
     updateValue(e.target.value)
   }
-  const option = questions.map((val,index) => {
+  const option = questions.map((val, index) => {
     return <option key={index}>{val}</option>
   })
 
-  return(
+  return (
     <CONTAINER>
       <label>{label}</label>
       <select onChange={handleChange}>
@@ -42,23 +41,17 @@ const CONTAINER = styled.div`
     padding-left: 5px;
     margin-bottom: 15px;
     background: #fff;
-    background-image:
-      linear-gradient(45deg, transparent 50%, #000 50%),
+    background-image: linear-gradient(45deg, transparent 50%, #000 50%),
       linear-gradient(135deg, #000 50%, transparent 50%),
       linear-gradient(to right, #000, #000);
-    background-position:
-      calc(100% - 17px) calc(0.75em),
-      calc(100% - 12px) calc(0.75em),
-      calc(100% - 2.5em) 0.5em;
-    background-size:
-      5px 5px,
-      5px 5px,
-      1px 0.9em;
+    background-position: calc(100% - 17px) calc(0.75em),
+      calc(100% - 12px) calc(0.75em), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 0.9em;
     background-repeat: no-repeat;
     &:focus {
       border: 1px solid #00a914;
     }
   }
-`;
+`
 
 export default GlobalSelect
