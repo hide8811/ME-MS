@@ -11,6 +11,7 @@ type Props = {
   inputName?: string
 
   updateValue?: any
+  isRequired?: string
 }
 
 const GlobalInput: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const GlobalInput: React.FC<Props> = ({
   placeholder,
   inputName,
   updateValue,
+  isRequired
 }) => {
   const [text, updateText] = useState('')
   const handleChange = (val: string) => {
@@ -30,7 +32,15 @@ const GlobalInput: React.FC<Props> = ({
 
   return (
     <INPUTS>
-      <label htmlFor={forName}>{label}</label>
+      <label htmlFor={forName}>
+        {label}
+        {
+          isRequired?
+          <span>{isRequired}</span>
+          :
+          <></>
+        }
+      </label>
       <input
         id={id}
         type={type}
@@ -48,6 +58,16 @@ const INPUTS = styled.div`
     display: block;
     width: 100%;
     margin-bottom: 7px;
+    span {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 12px;
+      background: #f00;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0 4px;
+      line-height: 18px;
+    }
   }
   input {
     width: 100%;

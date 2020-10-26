@@ -6,6 +6,7 @@ type Props = {
   label: string
   name: string
   updateValue: any
+  isRequired?: string
 }
 
 const GlobalRadio: React.FC<Props> = ({
@@ -13,6 +14,7 @@ const GlobalRadio: React.FC<Props> = ({
   choices,
   name,
   updateValue,
+  isRequired
 }) => {
   const [isChoice, changeChoice] = useState(choices[0])
   const handleChoice = () => {
@@ -48,7 +50,13 @@ const GlobalRadio: React.FC<Props> = ({
   return (
     <CONTAINER>
       <label className="label-name" htmlFor={name}>
-        {label}
+      {label}
+        {
+          isRequired?
+          <span>{isRequired}</span>
+          :
+          <></>
+        }
       </label>
       <div className="flex">{choicesInput}</div>
     </CONTAINER>
@@ -64,6 +72,16 @@ const CONTAINER = styled.div`
     display: block;
     width: 100%;
     margin-bottom: 7px;
+    span {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 12px;
+      background: #f00;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0 4px;
+      line-height: 18px;
+    }
   }
   .choice {
     display: block;
