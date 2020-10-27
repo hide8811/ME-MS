@@ -138,12 +138,12 @@ RSpec.describe Customer, type: :model do
 
     describe 'column: extended_time' do
       context '[option]が[true]の場合' do
-        context '値が"--"である場合' do
-          let(:customer) { build(:customer, option: true, extended_time: '--') }
+        context '値が"無し"である場合' do
+          let(:customer) { build(:customer, option: true, extended_time: '無し') }
           it_behaves_like '有効であること'
         end
 
-        context '値が"--"以外である場合' do
+        context '値が"無し"以外である場合' do
           let(:customer) { build(:customer, option: true, extended_time: '30min') }
           it_behaves_like '有効であること'
         end
@@ -158,12 +158,12 @@ RSpec.describe Customer, type: :model do
       end
 
       context '[option]が[false]の場合' do
-        context '値が"--"である場合' do
-          let(:customer) { build(:customer, option: false, extended_time: '--') }
+        context '値が"無し"である場合' do
+          let(:customer) { build(:customer, option: false, extended_time: '無し') }
           it_behaves_like '有効であること'
         end
 
-        context '値が"--"以外である場合' do
+        context '値が"無し"以外である場合' do
           it '無効であること' do
             customer = build(:customer, option: false, extended_time: '30min')
             customer.valid?
@@ -183,12 +183,12 @@ RSpec.describe Customer, type: :model do
 
     describe 'column: deep_lymph' do
       context '[option]が[true]の場合' do
-        context '値が"--"である場合' do
-          let(:customer) { build(:customer, option: true, deep_lymph: '--') }
+        context '値が"無し"である場合' do
+          let(:customer) { build(:customer, option: true, deep_lymph: '無し') }
           it_behaves_like '有効であること'
         end
 
-        context '値が"--"以外である場合' do
+        context '値が"無し"以外である場合' do
           let(:customer) { build(:customer, option: true, deep_lymph: '30min') }
           it_behaves_like '有効であること'
         end
@@ -203,12 +203,12 @@ RSpec.describe Customer, type: :model do
       end
 
       context '[option]が[false]の場合' do
-        context '値が"--"である場合' do
-          let(:customer) { build(:customer, option: false, deep_lymph: '--') }
+        context '値が"無し"である場合' do
+          let(:customer) { build(:customer, option: false, deep_lymph: '無し') }
           it_behaves_like '有効であること'
         end
 
-        context '値が"--"以外である場合' do
+        context '値が"無し"以外である場合' do
           it '無効であること' do
             customer = build(:customer, option: false, deep_lymph: '30min')
             customer.valid?

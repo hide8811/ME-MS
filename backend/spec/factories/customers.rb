@@ -6,7 +6,7 @@ FactoryBot.define do
     course { '60min' }
     option { true }
     cosplay { false }
-    extended_time { '--' }
-    deep_lymph { '--' }
+    extended_time { '無し' }
+    deep_lymph { '無し' }
   end
 end
