@@ -22,6 +22,7 @@ const LoginModal: React.FC<Props> = ({ clickEvent,history }) => {
       document.getElementById('form')?.classList.remove('failed')
       clickEvent()
       history.push('/')
+      LoginState = true
     } else {
       LoginState = false
       document.getElementById('form')?.classList.add('failed')
