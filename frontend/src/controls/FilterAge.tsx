@@ -6,7 +6,6 @@ type Props = {
 }
 
 const FilterAge: React.FC<Props> = ({ datas }) => {
-  console.log(datas)
   const initialAgeFilter: any = [
     { caseTitle: '10代後半', agesArray: [] },
     { caseTitle: '20代前半', agesArray: [] },

@@ -6,6 +6,7 @@ import Header from './components/Organisms/Header'
 import Form from './pages/Form'
 import Admin from './pages/admins/admin'
 import Admin_id from './pages/admins/_id'
+import Auth from './Auth/Auth'
 
 const App: React.FC = () => {
   const [isSignIn, chageSign] = useState(false)
@@ -21,12 +22,18 @@ const App: React.FC = () => {
     <>
       <Router>
         <Header clickEvent={() => chageSign(!isSignIn)} />
-        <Route exact path="/form" component={Form} />
-        <Route exact path="/" component={ContentBtns} />
-        <Route exact path="/admin" component={Admin} />
-        <Route path="/admin/:id" component={Admin_id} />
+        <Switch>
+          <Route exact path="/form" component={Form} />
+          <Auth>
+            <Switch>
+              <Route exact path="/" component={ContentBtns} />
+              <Route exact path="/admin" component={Admin} />
+              <Route path="/admin/:id" component={Admin_id} />
+            </Switch>
+          </Auth>
+        </Switch>
+        {login}
       </Router>
-      {login}
     </>
   )
 }

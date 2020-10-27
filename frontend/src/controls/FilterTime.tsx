@@ -64,7 +64,6 @@ const FilterTime: React.FC<Props> = ({ datas }) => {
       } else {
         timeObj += 15
       }
-    console.log(timeObj)
     return FilterCase(String(timeObj))
   })
   const numberCustomersArray: Array<number> = []
