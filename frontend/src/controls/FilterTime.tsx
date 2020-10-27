@@ -58,8 +58,14 @@ const FilterTime: React.FC<Props> = ({ datas }) => {
     }
   }
   datas.map((val: any) => {
-    const timeObj = String(new Date(val.time).getHours() + 15)
-    return FilterCase(timeObj)
+    let timeObj = new Date(val.time).getHours()
+      if (21 <= timeObj) {
+        timeObj -= 9
+      } else {
+        timeObj += 15
+      }
+    console.log(timeObj)
+    return FilterCase(String(timeObj))
   })
   const numberCustomersArray: Array<number> = []
 

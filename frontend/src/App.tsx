@@ -6,7 +6,6 @@ import Header from './components/Organisms/Header'
 import Form from './pages/Form'
 import Admin from './pages/admins/admin'
 import Admin_id from './pages/admins/_id'
-import Auth from './Auth/Auth'
 
 const App: React.FC = () => {
   const [isSignIn, chageSign] = useState(false)
