@@ -13,8 +13,8 @@ class Customer < ApplicationRecord
 
   with_options if: :option_false? do
     validates :cosplay, format: { with: /\Afalse\z/ }
-    validates :extended_time, format: { with: /\A--\z/ }
-    validates :deep_lymph, format: { with: /\A--\z/ }
+    validates :extended_time, format: { with: /\A無し\z/ }
+    validates :deep_lymph, format: { with: /\A無し\z/ }
   end
 
   def option_false?
