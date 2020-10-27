@@ -11,8 +11,8 @@ const Form = () => {
   const [course, updateValueCorse] = useState('')
   const [date, updateValueDate] = useState('')
   const [time, updateValueTime] = useState('')
-  const [option, updateValueOption] = useState('無し')
-  const [cosplay, updateValueCosplay] = useState('無し')
+  const [option, updateValueOption] = useState('false')
+  const [cosplay, updateValueCosplay] = useState('false')
   const [extended_time, updateValueExtend] = useState('無し')
   const [deep_lymph, updateValueDeep] = useState('無し')
   const datas: any = {
@@ -25,11 +25,11 @@ const Form = () => {
     extended_time,
     deep_lymph,
   }
-
+  console.log(time)
   const sendData = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     if(age === '' || date === '' || time === '' || course === '' ) {
       alert('必須の項目は全て入力してください')
-      e.preventDefault()
     } else {
       const isCorrect = window.confirm(
         `大まかな年齢：${age}\n利用日時：${date}\n利用時間：${time}\n利用コース：${course}\nオプションの有無：${option}\n衣装チェンジの有無：${cosplay}\n延長時間：${extended_time}\nディープリンパ：${deep_lymph}\n以上の内容でお間違いないですか？`
@@ -39,12 +39,11 @@ const Form = () => {
           .post('http://localhost:3000/customers', datas)
           .then(() => alert('送信しました'))
           .catch((e) => console.log(e))
-      } else {
-        e.preventDefault()
       }
     }
 
   }
+  console.log(datas)
 
   return (
     <CONTAINER onSubmit={sendData}>
@@ -81,7 +80,7 @@ const Form = () => {
       />
       {
         (() => {
-          if (option === '有り') {
+          if (option === 'true') {
             return (
               <div>
                 <GlobalRadio
@@ -144,7 +143,7 @@ const questions = {
     '90min',
     '100min',
   ],
-  choice: ['無し', '有り'],
+  choice: ['false', 'true'],
 }
 
 const CONTAINER = styled.form`

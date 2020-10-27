@@ -15,12 +15,13 @@ const Month: React.FC = (props: any) => {
       const result = await axios.get(
         'http://localhost:3000/customers/month_search',
         { params }
-      )
-      setData(result.data)
-    }
-    fetchData()
-  }, [])
-
+        )
+        setData(result.data)
+      }
+      fetchData()
+    }, [])
+    
+    console.log(datas)
   return (
     <CONTAINER>
       <h1>{urlParams}月の結果</h1>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 type Props = {
@@ -16,14 +16,6 @@ const GlobalRadio: React.FC<Props> = ({
   updateValue,
   isRequired
 }) => {
-  const [isChoice, changeChoice] = useState(choices[0])
-  const handleChoice = () => {
-    if (isChoice === choices[0]) {
-      changeChoice(choices[1])
-    } else {
-      changeChoice(choices[0])
-    }
-  }
   const updateValueChoice = (e: any) => {
     updateValue(e.target.value)
   }
@@ -36,12 +28,18 @@ const GlobalRadio: React.FC<Props> = ({
           name={name}
           id={name + index}
           value={val}
-          checked={val === isChoice}
-          onClick={handleChoice}
           onChange={updateValueChoice}
         />
         <label className="choice" htmlFor={name + index}>
-          {val}
+          {
+            (() => {
+              if(val === 'false'){
+                return '無し'
+              } else {
+                return '有り'
+              }
+            })()
+          }
         </label>
       </div>
     )
