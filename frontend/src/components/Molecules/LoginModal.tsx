@@ -1,25 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import GlobalBtn from '../Atoms/GlobalBtn'
 import GlobalInput from '../Atoms/GlobalInput'
+import { withRouter ,RouteComponentProps } from 'react-router-dom'
+import history from 'history'
 
-type Props = {
-  clickEvent: any
+type Props = RouteComponentProps & {
+  clickEvent: any,
 }
 
-const LoginModal: React.FC<Props> = ({ clickEvent }) => {
+export let LoginState = false
+
+const LoginModal: React.FC<Props> = ({ clickEvent,history }) => {
+  
+  const [idText, updateValueId] = useState('')
+  const [psText, updateValuePass] = useState('')
+
+  const isLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if(idText === 'comfortbois' || psText === 'comfortbois2020') {
+      document.getElementById('form')?.classList.remove('failed')
+      clickEvent()
+      history.push('/')
+    } else {
+      LoginState = false
+      document.getElementById('form')?.classList.add('failed')
+    }
+  }
+
   return (
     <LOGIN>
       <div className="close-back" onClick={clickEvent}></div>
-      <form>
-        <GlobalInput type="text" placeholder="id" label={'ログインID'} />
+      <form onSubmit={isLogin} id={'form'}>
+        <GlobalInput type="text" placeholder="id" label={'ログインID'} updateValue={updateValueId}/>
         <GlobalInput
           type="password"
           placeholder="password"
           label={'パスワード'}
+          updateValue={updateValuePass}
         />
         <div className="text-right">
-          <GlobalBtn btnName="btn" clickEvent={() => clickEvent} />
+          <GlobalBtn btnName="ログイン" />
         </div>
       </form>
     </LOGIN>
@@ -58,6 +79,9 @@ const LOGIN = styled.div`
       text-align: right;
     }
   }
+  .failed {
+    border: 2px solid #f00;
+  }
 `
 
-export default LoginModal
+export default withRouter(LoginModal)

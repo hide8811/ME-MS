@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 type Props = {
   datas: Array<any>
@@ -8,16 +7,12 @@ type Props = {
 const FilterOptionCosplay:React.FC<Props> = ({datas}) => {
 
   const initialOptionCosplayFilter: any = [
-    { caseTitle: '衣装チェンジ無し', cosplayArray: [] },
-    { caseTitle: '衣装チェンジ有り', cosplayArray: [] }
+    { caseTitle: '衣装チェンジ選択率', cosplayArray: [] }
   ]
   const FilterCase = (user_case: boolean) => {
     switch (user_case) {
-      case false:
-        initialOptionCosplayFilter[0].cosplayArray.push(1)
-        break
       case true:
-        initialOptionCosplayFilter[1].cosplayArray.push(1)
+        initialOptionCosplayFilter[0].cosplayArray.push(1)
         break
       default:
         return null

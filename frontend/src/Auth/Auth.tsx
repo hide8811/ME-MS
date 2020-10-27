@@ -1,9 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import User from './User'
+import { LoginState } from '../components/Molecules/LoginModal'
 
-const Auth = (porps:any) => {
-  User.isLoggedIn() ? porps.children : <Redirect to={'/form'} />
+const Auth:React.FC = ({children}) => {
+  const content = LoginState ? children : <Redirect to={'/form'} />
+  return <>{content}</>
 }
 
 export default Auth

@@ -22,12 +22,18 @@ const App: React.FC = () => {
     <>
       <Router>
         <Header clickEvent={() => chageSign(!isSignIn)} />
-        <Route exact path="/form" component={Form} />
-        <Route exact path="/" component={ContentBtns} />
-        <Route exact path="/admin" component={Admin} />
-        <Route path="/admin/:id" component={Admin_id} />
+        <Switch>
+          <Route exact path="/form" component={Form} />
+          <Auth>
+            <Switch>
+              <Route exact path="/" component={ContentBtns} />
+              <Route exact path="/admin" component={Admin} />
+              <Route path="/admin/:id" component={Admin_id} />
+            </Switch>
+          </Auth>
+        </Switch>
+        {login}
       </Router>
-      {login}
     </>
   )
 }

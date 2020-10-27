@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { FilterAge, FilterCourse, FilterOption, FilterOptionCosplay, FilterOptionDeep, FilterOptionExtend, FilterTime, FilterWeek } from '../../controls'
+import { FilterAge, FilterCourse, FilterOption, FilterTime, FilterWeek } from '../../controls'
 
 const Month: React.FC = (props: any) => {
   const urlParams: number = props.match.params.id
@@ -20,8 +20,7 @@ const Month: React.FC = (props: any) => {
       }
       fetchData()
     }, [])
-    
-    console.log(datas)
+
   return (
     <CONTAINER>
       <h1>{urlParams}月の結果</h1>

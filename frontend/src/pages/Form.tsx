@@ -25,25 +25,26 @@ const Form = () => {
     extended_time,
     deep_lymph,
   }
-  console.log(time)
+
   const sendData = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
     if(age === '' || date === '' || time === '' || course === '' ) {
+      e.preventDefault()
       alert('必須の項目は全て入力してください')
     } else {
       const isCorrect = window.confirm(
         `大まかな年齢：${age}\n利用日時：${date}\n利用時間：${time}\n利用コース：${course}\nオプションの有無：${option}\n衣装チェンジの有無：${cosplay}\n延長時間：${extended_time}\nディープリンパ：${deep_lymph}\n以上の内容でお間違いないですか？`
         )
       if (isCorrect) {
+        alert('送信しました')
         axios
           .post('http://localhost:3000/customers', datas)
           .then(() => alert('送信しました'))
           .catch((e) => console.log(e))
+      } else {
+        e.preventDefault()
       }
     }
-
   }
-  console.log(datas)
 
   return (
     <CONTAINER onSubmit={sendData}>
@@ -85,7 +86,7 @@ const Form = () => {
               <div>
                 <GlobalRadio
                   choices={questions.choice}
-                  label={'コスプレの有無'}
+                  label={'衣装チェンジの有無'}
                   name={'choice-cosplay'}
                   updateValue={updateValueCosplay}
                 />
