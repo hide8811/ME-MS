@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import GlobalBtn from '../Atoms/GlobalBtn'
 import GlobalInput from '../Atoms/GlobalInput'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import history from 'history'
 
 type Props = RouteComponentProps & {
   clickEvent: any

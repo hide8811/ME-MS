@@ -1,7 +1,7 @@
 FROM node:12-alpine
 ARG WORKDIR
 
-WORKDIR /usr/src/${WORKDIR}
+WORKDIR /${WORKDIR}/frontend
 
 COPY ["package.json", "yarn.lock", "./"]
 RUN yarn install

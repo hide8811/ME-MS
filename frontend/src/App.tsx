@@ -1,10 +1,5 @@
 import React, { useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ContentBtns from './components/Molecules/ContentBtns'
 import LoginModal from './components/Molecules/LoginModal'
 import Header from './components/Organisms/Header'

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ContentBtn from '../Atoms/ContentBtn'
 import { Link } from 'react-router-dom'
 
-const ContentBtns = () => {
+const ContentBtns: React.FC = () => {
   return (
     <FLEX>
       <Link to="/admin">

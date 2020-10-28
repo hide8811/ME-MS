@@ -25,7 +25,7 @@ const Month: React.FC = (props: any) => {
       setData(result.data)
     }
     fetchData()
-  }, [])
+  }, [urlParams])
 
   return (
     <CONTAINER>
