@@ -6,11 +6,10 @@ type Props = {
   datas: Array<any>
 }
 
-const FilterOption:React.FC<Props> = ({datas}) => {
-
+const FilterOption: React.FC<Props> = ({ datas }) => {
   const initialOptionFilter: any = [
     { caseTitle: '無し', optionArray: [] },
-    { caseTitle: '有り', optionArray: [] }
+    { caseTitle: '有り', optionArray: [] },
   ]
   const FilterCase = (user_case: boolean) => {
     switch (user_case) {
@@ -67,7 +66,7 @@ const CONTAINER = styled.div`
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 15px;
-    &-title{
+    &-title {
       margin-bottom: 10px;
       color: #343434;
     }

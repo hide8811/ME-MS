@@ -2,23 +2,21 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import GlobalBtn from '../Atoms/GlobalBtn'
 import GlobalInput from '../Atoms/GlobalInput'
-import { withRouter ,RouteComponentProps } from 'react-router-dom'
-import history from 'history'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 type Props = RouteComponentProps & {
-  clickEvent: any,
+  clickEvent: any
 }
 
 export let LoginState = false
 
-const LoginModal: React.FC<Props> = ({ clickEvent,history }) => {
-  
+const LoginModal: React.FC<Props> = ({ clickEvent, history }) => {
   const [idText, updateValueId] = useState('')
   const [psText, updateValuePass] = useState('')
 
   const isLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if(idText === 'comfortbois' || psText === 'comfortbois2020') {
+    if (idText === 'comfortbois' || psText === 'comfortbois2020') {
       document.getElementById('form')?.classList.remove('failed')
       clickEvent()
       history.push('/')
@@ -33,7 +31,12 @@ const LoginModal: React.FC<Props> = ({ clickEvent,history }) => {
     <LOGIN>
       <div className="close-back" onClick={clickEvent}></div>
       <form onSubmit={isLogin} id={'form'}>
-        <GlobalInput type="text" placeholder="id" label={'ログインID'} updateValue={updateValueId}/>
+        <GlobalInput
+          type="text"
+          placeholder="id"
+          label={'ログインID'}
+          updateValue={updateValueId}
+        />
         <GlobalInput
           type="password"
           placeholder="password"
