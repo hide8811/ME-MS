@@ -4,14 +4,13 @@ type Props = {
   datas: Array<any>
 }
 
-const FilterOptionExtend:React.FC<Props> = ({datas}) => {
-
+const FilterOptionExtend: React.FC<Props> = ({ datas }) => {
   const initialOptionExtendFilter: any = [
     { caseTitle: '無し', extendArray: [] },
     { caseTitle: '30min', extendArray: [] },
     { caseTitle: '60min', extendArray: [] },
     { caseTitle: '90min', extendArray: [] },
-    { caseTitle: '120min', extendArray: [] }
+    { caseTitle: '120min', extendArray: [] },
   ]
   const FilterCase = (user_case: string) => {
     switch (user_case) {

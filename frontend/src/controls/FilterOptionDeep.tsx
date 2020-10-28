@@ -4,8 +4,7 @@ type Props = {
   datas: Array<any>
 }
 
-const FilterOptionDeep:React.FC<Props> = ({datas}) => {
-
+const FilterOptionDeep: React.FC<Props> = ({ datas }) => {
   const initialOptionDeepFilter: any = [
     { caseTitle: '無し', deepArray: [] },
     { caseTitle: '10min', deepArray: [] },
@@ -17,7 +16,7 @@ const FilterOptionDeep:React.FC<Props> = ({datas}) => {
     { caseTitle: '70min', deepArray: [] },
     { caseTitle: '80min', deepArray: [] },
     { caseTitle: '90min', deepArray: [] },
-    { caseTitle: '100min', deepArray: [] }
+    { caseTitle: '100min', deepArray: [] },
   ]
   const FilterCase = (user_case: string) => {
     switch (user_case) {

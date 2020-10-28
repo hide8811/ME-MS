@@ -14,7 +14,7 @@ const GlobalRadio: React.FC<Props> = ({
   choices,
   name,
   updateValue,
-  isRequired
+  isRequired,
 }) => {
   const updateValueChoice = (e: any) => {
     updateValue(e.target.value)
@@ -31,15 +31,13 @@ const GlobalRadio: React.FC<Props> = ({
           onChange={updateValueChoice}
         />
         <label className="choice" htmlFor={name + index}>
-          {
-            (() => {
-              if(val === 'false'){
-                return '無し'
-              } else {
-                return '有り'
-              }
-            })()
-          }
+          {(() => {
+            if (val === 'false') {
+              return '無し'
+            } else {
+              return '有り'
+            }
+          })()}
         </label>
       </div>
     )
@@ -48,13 +46,8 @@ const GlobalRadio: React.FC<Props> = ({
   return (
     <CONTAINER>
       <label className="label-name" htmlFor={name}>
-      {label}
-        {
-          isRequired?
-          <span>{isRequired}</span>
-          :
-          <></>
-        }
+        {label}
+        {isRequired ? <span>{isRequired}</span> : <></>}
       </label>
       <div className="flex">{choicesInput}</div>
     </CONTAINER>

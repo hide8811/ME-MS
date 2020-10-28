@@ -4,10 +4,9 @@ type Props = {
   datas: Array<any>
 }
 
-const FilterOptionCosplay:React.FC<Props> = ({datas}) => {
-
+const FilterOptionCosplay: React.FC<Props> = ({ datas }) => {
   const initialOptionCosplayFilter: any = [
-    { caseTitle: '衣装チェンジ選択率', cosplayArray: [] }
+    { caseTitle: '衣装チェンジ選択率', cosplayArray: [] },
   ]
   const FilterCase = (user_case: boolean) => {
     switch (user_case) {

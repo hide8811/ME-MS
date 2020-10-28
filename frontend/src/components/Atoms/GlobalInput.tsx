@@ -22,7 +22,7 @@ const GlobalInput: React.FC<Props> = ({
   placeholder,
   inputName,
   updateValue,
-  isRequired
+  isRequired,
 }) => {
   const [text, updateText] = useState('')
   const handleChange = (val: string) => {
@@ -34,12 +34,7 @@ const GlobalInput: React.FC<Props> = ({
     <INPUTS>
       <label htmlFor={forName}>
         {label}
-        {
-          isRequired?
-          <span>{isRequired}</span>
-          :
-          <></>
-        }
+        {isRequired ? <span>{isRequired}</span> : <></>}
       </label>
       <input
         id={id}

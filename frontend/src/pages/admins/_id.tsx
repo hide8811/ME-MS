@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { FilterAge, FilterCourse, FilterOption, FilterTime, FilterWeek } from '../../controls'
+import {
+  FilterAge,
+  FilterCourse,
+  FilterOption,
+  FilterTime,
+  FilterWeek,
+} from '../../controls'
 
 const Month: React.FC = (props: any) => {
   const urlParams: number = props.match.params.id
@@ -15,11 +21,11 @@ const Month: React.FC = (props: any) => {
       const result = await axios.get(
         'http://localhost:3000/customers/month_search',
         { params }
-        )
-        setData(result.data)
-      }
-      fetchData()
-    }, [])
+      )
+      setData(result.data)
+    }
+    fetchData()
+  }, [])
 
   return (
     <CONTAINER>

@@ -5,9 +5,7 @@ type Props = {
   datas: any
 }
 
-
 const FilterTime: React.FC<Props> = ({ datas }) => {
-
   const initialTimeFilter: any = [
     { caseTitle: '12時〜13時59分', timeArray: [] },
     { caseTitle: '14時〜15時59分', timeArray: [] },
@@ -59,11 +57,11 @@ const FilterTime: React.FC<Props> = ({ datas }) => {
   }
   datas.map((val: any) => {
     let timeObj = new Date(val.time).getHours()
-      if (21 <= timeObj) {
-        timeObj -= 9
-      } else {
-        timeObj += 15
-      }
+    if (21 <= timeObj) {
+      timeObj -= 9
+    } else {
+      timeObj += 15
+    }
     return FilterCase(String(timeObj))
   })
   const numberCustomersArray: Array<number> = []

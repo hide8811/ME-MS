@@ -8,7 +8,12 @@ type Props = {
   isRequired?: string
 }
 
-const GlobalSelect: React.FC<Props> = ({ label, questions, updateValue, isRequired }) => {
+const GlobalSelect: React.FC<Props> = ({
+  label,
+  questions,
+  updateValue,
+  isRequired,
+}) => {
   const handleChange = (e: any) => {
     updateValue(e.target.value)
   }
@@ -20,12 +25,7 @@ const GlobalSelect: React.FC<Props> = ({ label, questions, updateValue, isRequir
     <CONTAINER>
       <label>
         {label}
-        {
-          isRequired?
-          <span>{isRequired}</span>
-          :
-          <></>
-        }
+        {isRequired ? <span>{isRequired}</span> : <></>}
       </label>
       <select onChange={handleChange}>
         <option hidden>選択してください</option>

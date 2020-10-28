@@ -27,13 +27,13 @@ const Form = () => {
   }
 
   const sendData = (e: React.FormEvent<HTMLFormElement>) => {
-    if(age === '' || date === '' || time === '' || course === '' ) {
+    if (age === '' || date === '' || time === '' || course === '') {
       e.preventDefault()
       alert('必須の項目は全て入力してください')
     } else {
       const isCorrect = window.confirm(
         `大まかな年齢：${age}\n利用日時：${date}\n利用時間：${time}\n利用コース：${course}\nオプションの有無：${option}\n衣装チェンジの有無：${cosplay}\n延長時間：${extended_time}\nディープリンパ：${deep_lymph}\n以上の内容でお間違いないですか？`
-        )
+      )
       if (isCorrect) {
         alert('送信しました')
         axios
@@ -79,37 +79,35 @@ const Form = () => {
         updateValue={updateValueOption}
         isRequired={'必須'}
       />
-      {
-        (() => {
-          if (option === 'true') {
-            return (
-              <div>
-                <GlobalRadio
-                  choices={questions.choice}
-                  label={'衣装チェンジの有無'}
-                  name={'choice-cosplay'}
-                  updateValue={updateValueCosplay}
-                />
-                <GlobalSelect
-                  questions={questions.extend}
-                  label={'延長時間'}
-                  updateValue={updateValueExtend}
-                />
-                <GlobalSelect
-                  questions={questions.deep}
-                  label={'ディープリンパ'}
-                  updateValue={updateValueDeep}
-                />
-              </div>
-            )
-          } else {
-            return <></>
-          }
-        })()
-      }
-        <div className="right">
-          <GlobalBtn btnName="送信する" />
-        </div>
+      {(() => {
+        if (option === 'true') {
+          return (
+            <div>
+              <GlobalRadio
+                choices={questions.choice}
+                label={'衣装チェンジの有無'}
+                name={'choice-cosplay'}
+                updateValue={updateValueCosplay}
+              />
+              <GlobalSelect
+                questions={questions.extend}
+                label={'延長時間'}
+                updateValue={updateValueExtend}
+              />
+              <GlobalSelect
+                questions={questions.deep}
+                label={'ディープリンパ'}
+                updateValue={updateValueDeep}
+              />
+            </div>
+          )
+        } else {
+          return <></>
+        }
+      })()}
+      <div className="right">
+        <GlobalBtn btnName="送信する" />
+      </div>
     </CONTAINER>
   )
 }
