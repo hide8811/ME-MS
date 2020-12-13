@@ -2,6 +2,9 @@ version: "3.8"
 
 volumes:
   db-data:
+  tmp-date:
+  log-date:
+  public-date:
 
 services:
   frontend:
@@ -23,16 +26,31 @@ services:
       context: ./backend
       args:
         WORKDIR: ${WORKDIR}
-    command: ash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: ash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     environment:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       API_DOMEIN: localhost:${FRONTEND_PORT}
     volumes:
       - ./backend:/${WORKDIR}
+      - tmp-date:/${WORKDIR}/tmp
+      - log-date:/${WORKDIR}/log
     ports:
       - "${BACKEND_PORT}:${CONTAINER_PORT}"
     depends_on:
       - db
+
+  nginx:
+    build:
+      context: nginx
+    volumes:
+      - public-date:/${WORKDIR}/public
+      - tmp-date:/${WORKDIR}/tmp
+    environment:
+      WORKDIR: ${WORKDIR}
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
 
   db:
     image: mysql
