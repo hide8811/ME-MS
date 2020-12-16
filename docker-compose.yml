@@ -16,7 +16,7 @@ services:
     volumes:
       - ./frontend:/${WORKDIR}
     ports:
-      - "${FRONTEND_PORT}:${CONTAINER_PORT}"
+      - "${FRONTEND_PORT}:3000"
     stdin_open: true
     depends_on:
       - backend
@@ -35,7 +35,7 @@ services:
       - tmp-date:/${WORKDIR}/tmp
       - log-date:/${WORKDIR}/log
     ports:
-      - "${BACKEND_PORT}:${CONTAINER_PORT}"
+      - "${BACKEND_PORT}:3000"
     depends_on:
       - db
 
@@ -48,7 +48,7 @@ services:
     environment:
       WORKDIR: ${WORKDIR}
     ports:
-      - "80:80"
+      - "${NGINX_PORT}:80"
     depends_on:
       - backend
 
