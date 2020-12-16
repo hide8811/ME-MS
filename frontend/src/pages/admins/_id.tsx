@@ -19,7 +19,7 @@ const Month: React.FC = (props: any) => {
       // paramsはAxiosRequestConfigに指定されている。
       // typescriptでaxiosにパラメータをつける場合はパラメータの名前はparamsにしなければならない。
       const result = await axios.get(
-        'http://localhost:3000/customers/month_search',
+        'http://localhost:80/customers/month_search',
         { params }
       )
       setData(result.data)

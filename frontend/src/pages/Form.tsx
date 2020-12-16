@@ -37,7 +37,7 @@ const Form = () => {
       if (isCorrect) {
         alert('送信しました')
         axios
-          .post('http://localhost:3000/customers', datas)
+          .post('http://localhost:80/customers', datas)
           .then(() => alert('送信しました'))
           .catch((e) => console.log(e))
       } else {
