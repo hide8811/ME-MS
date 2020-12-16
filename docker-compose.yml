@@ -45,8 +45,10 @@ services:
     volumes:
       - public-date:/${WORKDIR}/public
       - tmp-date:/${WORKDIR}/tmp
+    command: /bin/sh -c "envsubst '$$HOME $$IP_ADDR' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'  -c /etc/nginx/nginx.conf"
     environment:
-      WORKDIR: ${WORKDIR}
+      HOME: ${WORKDIR}
+      IP_ADDR: ${IP_ADDR}
     ports:
       - "${NGINX_PORT}:80"
     depends_on:
