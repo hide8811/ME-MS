@@ -35,7 +35,8 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const params = { year: '2020' }
-      const result = await axios.get('http://localhost:80/customers', {
+      const DOMAIN = process.env.REACT_APP_IP_ADDR
+      const result = await axios.get(`http://${DOMAIN}:80/customers`, {
         params,
       })
       getDataObj1(result.data.January)

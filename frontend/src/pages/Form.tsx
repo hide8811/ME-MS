@@ -25,7 +25,7 @@ const Form = () => {
     extended_time,
     deep_lymph,
   }
-
+  const DOMAIN = process.env.REACT_APP_IP_ADDR
   const sendData = (e: React.FormEvent<HTMLFormElement>) => {
     if (age === '' || date === '' || time === '' || course === '') {
       e.preventDefault()
@@ -37,7 +37,7 @@ const Form = () => {
       if (isCorrect) {
         alert('送信しました')
         axios
-          .post('http://localhost:80/customers', datas)
+          .post(`http://${DOMAIN}:80/customers`, datas)
           .then(() => alert('送信しました'))
           .catch((e) => console.log(e))
       } else {
