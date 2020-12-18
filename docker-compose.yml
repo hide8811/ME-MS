@@ -31,7 +31,7 @@ services:
     command: ash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     environment:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      API_DOMEIN: localhost:${FRONTEND_PORT}
+      API_DOMEIN: ${IP_ADDR}:${FRONTEND_PORT}
     volumes:
       - ./backend:/${WORKDIR}
       - tmp-date:/${WORKDIR}/tmp
