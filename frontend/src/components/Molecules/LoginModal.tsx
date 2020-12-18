@@ -34,13 +34,13 @@ const LoginModal: React.FC<Props> = ({ clickEvent, history }) => {
         <GlobalInput
           type="text"
           placeholder="id"
-          label={'ログインID'}
+          label={'ログインID【comfortbois】'}
           updateValue={updateValueId}
         />
         <GlobalInput
           type="password"
           placeholder="password"
-          label={'パスワード'}
+          label={'パスワード【comfortbois2020】'}
           updateValue={updateValuePass}
         />
         <div className="text-right">
