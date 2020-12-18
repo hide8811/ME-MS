@@ -18,8 +18,9 @@ const Month: React.FC = (props: any) => {
       const params = { month: '2020-' + urlParams }
       // paramsはAxiosRequestConfigに指定されている。
       // typescriptでaxiosにパラメータをつける場合はパラメータの名前はparamsにしなければならない。
+      const DOMAIN = process.env.REACT_APP_IP_ADDR
       const result = await axios.get(
-        'http://localhost:3000/customers/month_search',
+        `http://${DOMAIN}:80/customers/month_search`,
         { params }
       )
       setData(result.data)
